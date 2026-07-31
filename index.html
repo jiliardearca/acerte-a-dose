@@ -46,6 +46,9 @@ body{
 .cartao .texto{display:flex;flex-direction:column;gap:5px;min-width:0}
 .cartao .marca{display:block;font-size:15.5px;font-weight:700;line-height:1.35}
 .cartao .det{display:block;font-size:13.5px;color:var(--tinta-2);line-height:1.6}
+.cartao .baixar{display:inline-block;margin-top:4px;font-size:13px;font-weight:700;color:var(--fita);
+  text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
+.cartao .baixar:hover{color:#134527}
 
 .bola{border-radius:50%;position:relative;display:grid;place-items:center;flex:none;
   box-shadow:inset 0 -6px 13px rgba(0,0,0,.2),0 4px 11px rgba(37,42,74,.22)}
@@ -315,8 +318,10 @@ function pintarCenarios(){
       '<span class="bola ' + cor(c.n) + '"><span>' + c.n + '</span></span>' +
       '<span class="texto"><span class="marca">Cenário ' + c.n + ' — ' + c.bolas.length + ' questões</span>' +
       '<span class="det">cartela ' + c.grade + '×' + c.grade + ' · ' + c.part + ' participantes<br>' +
-      c.tempo + ' · ' + mmss(c.seg) + ' por questão</span></span>';
-    b.onclick = () => abrirCenario(c.n);
+      c.tempo + ' · ' + mmss(c.seg) + ' por questão</span>' +
+      '<a class="baixar" href="cartelas/cartelas-cenario-' + c.n + '.pdf" target="_blank" rel="noopener">' +
+      'Baixar as ' + c.part + ' cartelas</a></span>';
+    b.onclick = e => { if(e.target.classList.contains('baixar')) return; abrirCenario(c.n); };
     $('listaCenarios').appendChild(b);
   });
   const t = totalEditadas();
