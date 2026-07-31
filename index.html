@@ -22,101 +22,64 @@ html,body{height:100%}
 body{
   font-family:var(--sans); color:var(--tinta);
   background:linear-gradient(118deg,var(--menta) 0%,var(--ceu) 46%,var(--anil) 100%);
-  background-attachment:fixed; min-height:100vh;
-  -webkit-font-smoothing:antialiased;
+  background-attachment:fixed; min-height:100vh; -webkit-font-smoothing:antialiased;
 }
 .env{max-width:1180px;margin:0 auto;padding:clamp(20px,3.4vw,44px) clamp(16px,3vw,32px) 56px}
 
-/* ---------- cabeçalho ---------- */
-.selo{text-align:center;margin-bottom:clamp(26px,4vw,48px)}
-.selo h1{
-  font-family:var(--serif); font-weight:400; letter-spacing:-.015em;
-  font-size:clamp(38px,7.4vw,76px); line-height:.98; text-wrap:balance;
-}
+.selo{text-align:center;margin-bottom:clamp(24px,3.4vw,40px)}
+.selo h1{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;
+  font-size:clamp(38px,7.4vw,76px);line-height:.98;text-wrap:balance}
 .selo h1 em{font-style:normal;display:block}
-.fita{
-  display:inline-block;margin-top:16px;background:var(--fita);color:#F2FBF4;
+.fita{display:inline-block;margin-top:16px;background:var(--fita);color:#F2FBF4;
   font-size:clamp(11px,1.5vw,14px);font-weight:600;letter-spacing:.26em;
-  text-transform:uppercase;padding:9px 26px;border-radius:3px;
-}
+  text-transform:uppercase;padding:9px 26px;border-radius:3px}
 .selo p{margin-top:18px;color:var(--tinta-2);font-size:16px}
 
-/* ---------- escolha de cenário ---------- */
-.cenarios{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));
-  gap:clamp(14px,1.8vw,22px);
-}
-.cartao{
-  display:flex;align-items:center;gap:20px;text-align:left;width:100%;
+.cenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:clamp(14px,1.8vw,22px)}
+.cartao{display:flex;align-items:center;gap:20px;text-align:left;width:100%;
   background:var(--papel-2);border:1px solid rgba(37,42,74,.09);border-radius:var(--r);
   padding:22px 24px;cursor:pointer;font:inherit;color:inherit;
-  transition:transform .18s cubic-bezier(.2,.9,.3,1.2), box-shadow .18s, background .18s;
-}
-.cartao:hover,.cartao:focus-visible{
-  transform:translateY(-4px);background:var(--papel);
-  box-shadow:0 14px 30px rgba(37,42,74,.16);outline:none;
-}
+  transition:transform .18s cubic-bezier(.2,.9,.3,1.2),box-shadow .18s,background .18s}
+.cartao:hover,.cartao:focus-visible{transform:translateY(-4px);background:var(--papel);
+  box-shadow:0 14px 30px rgba(37,42,74,.16);outline:none}
 .cartao:focus-visible{box-shadow:0 0 0 3px var(--tinta),0 14px 30px rgba(37,42,74,.16)}
 .cartao .texto{display:flex;flex-direction:column;gap:5px;min-width:0}
-.cartao .marca{display:block;font-size:15.5px;font-weight:700;letter-spacing:.01em;line-height:1.35}
+.cartao .marca{display:block;font-size:15.5px;font-weight:700;line-height:1.35}
 .cartao .det{display:block;font-size:13.5px;color:var(--tinta-2);line-height:1.6}
 
-/* ---------- bolinha (usada no card e no globo) ---------- */
-.bola{
-  border-radius:50%;position:relative;display:grid;place-items:center;flex:none;
-  box-shadow:inset 0 -6px 13px rgba(0,0,0,.2), 0 4px 11px rgba(37,42,74,.22);
-}
-.bola::after{
-  content:"";position:absolute;top:7%;left:12%;width:19%;height:12%;
-  border-radius:50%;background:rgba(255,255,255,.62);transform:rotate(-30deg);
-}
-.bola>span{
-  position:relative;z-index:1;width:62%;aspect-ratio:1;border-radius:50%;
-  background:#FDFDF8;display:grid;place-items:center;
-  font-weight:800;font-variant-numeric:tabular-nums;
-  box-shadow:inset 0 2px 5px rgba(0,0,0,.17);
-}
+.bola{border-radius:50%;position:relative;display:grid;place-items:center;flex:none;
+  box-shadow:inset 0 -6px 13px rgba(0,0,0,.2),0 4px 11px rgba(37,42,74,.22)}
+.bola::after{content:"";position:absolute;top:7%;left:12%;width:19%;height:12%;
+  border-radius:50%;background:rgba(255,255,255,.62);transform:rotate(-30deg)}
+.bola>span{position:relative;z-index:1;width:62%;aspect-ratio:1;border-radius:50%;
+  background:#FDFDF8;display:grid;place-items:center;font-weight:800;
+  font-variant-numeric:tabular-nums;box-shadow:inset 0 2px 5px rgba(0,0,0,.17)}
 .c1{background:var(--laranja)} .c1>span{color:#6B4A12}
 .c2{background:var(--verde)}   .c2>span{color:#1E4D26}
 .c3{background:var(--vermelho)}.c3>span{color:#5E1414}
 .c4{background:var(--roxo)}    .c4>span{color:#4A1461}
 .c5{background:var(--azul)}    .c5>span{color:#1A2270}
-.cartao .bola{width:64px;height:64px}
-.cartao .bola>span{font-size:26px}
+.cartao .bola{width:64px;height:64px} .cartao .bola>span{font-size:26px}
 
-/* ---------- barra do jogo ---------- */
-.barra{
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  margin-bottom:clamp(20px,3vw,34px);
-}
-.btn{
-  font:inherit;font-weight:700;font-size:15.5px;cursor:pointer;border:none;
-  border-radius:999px;padding:13px 28px;color:#fff;background:var(--tinta);
-  box-shadow:0 4px 0 rgba(37,42,74,.28);transition:transform .12s,box-shadow .12s,opacity .15s;
-}
+.barra{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:clamp(20px,3vw,34px)}
+.btn{font:inherit;font-weight:700;font-size:15.5px;cursor:pointer;border:none;border-radius:999px;
+  padding:13px 28px;color:#fff;background:var(--tinta);box-shadow:0 4px 0 rgba(37,42,74,.28);
+  transition:transform .12s,box-shadow .12s,opacity .15s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(37,42,74,.28)}
 .btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(37,42,74,.28)}
 .btn:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}
 .btn[disabled]{opacity:.38;cursor:not-allowed;transform:none;box-shadow:0 4px 0 rgba(37,42,74,.28)}
 .btn.claro{background:var(--papel-2);color:var(--tinta);box-shadow:0 4px 0 rgba(37,42,74,.13)}
 .btn.claro:hover{background:var(--papel)}
-.placar{
-  background:var(--papel-2);border-radius:999px;padding:12px 22px;
-  font-weight:700;font-size:15px;font-variant-numeric:tabular-nums;
-}
-.tituloCen{
-  font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);margin-right:auto;
-}
-.tituloCen small{
-  display:block;font-family:var(--sans);font-size:13.5px;
-  color:var(--tinta-2);font-weight:400;margin-top:3px;
-}
+.btn.mini{padding:8px 17px;font-size:13.5px;box-shadow:0 3px 0 rgba(37,42,74,.13)}
+.placar{background:var(--papel-2);border-radius:999px;padding:12px 22px;font-weight:700;
+  font-size:15px;font-variant-numeric:tabular-nums}
+.tituloCen{font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);margin-right:auto}
+.tituloCen small{display:block;font-family:var(--sans);font-size:13.5px;color:var(--tinta-2);
+  font-weight:400;margin-top:3px}
 
-/* ---------- globo ---------- */
-.globo{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(74px,1fr));
-  gap:clamp(9px,1.3vw,16px);margin-bottom:34px;
-}
+.globo{display:grid;grid-template-columns:repeat(auto-fit,minmax(74px,1fr));
+  gap:clamp(9px,1.3vw,16px);margin-bottom:34px}
 .globo .bola{width:100%;height:auto;aspect-ratio:1;border:none;padding:0;cursor:pointer;
   transition:transform .16s cubic-bezier(.2,.9,.3,1.2),opacity .2s,filter .2s}
 .globo .bola>span{font-size:clamp(19px,2.5vw,30px)}
@@ -127,56 +90,67 @@ body{
 .globo .bola.girando{animation:pisca .11s steps(1) infinite}
 @keyframes pisca{50%{transform:scale(1.18)}}
 
-/* ---------- já saíram ---------- */
 .saidas{background:var(--papel-2);border-radius:var(--r);padding:22px 24px}
-.saidas h2{
-  font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--tinta-2);margin-bottom:14px;
-}
+.saidas h2{font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--tinta-2);margin-bottom:14px}
 .saidas .vazio{color:var(--tinta-2);font-size:14.5px}
 .lista{display:flex;flex-wrap:wrap;gap:9px}
-.tag{
-  display:flex;align-items:center;gap:9px;background:#fff;border-radius:999px;
-  padding:6px 15px 6px 6px;font-size:14.5px;font-weight:600;
-}
-.tag b{
-  width:27px;height:27px;border-radius:50%;display:grid;place-items:center;
-  color:#fff;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;
+.tag{display:flex;align-items:center;gap:9px;background:#fff;border-radius:999px;
+  padding:6px 15px 6px 6px;font-size:14.5px;font-weight:600}
+.tag b{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;color:#fff;
+  font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+
+/* ---------- banco de questões ---------- */
+.cabBanco{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.cabBanco h2{font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);font-weight:400;margin-right:auto}
+.cabBanco h2 small{display:block;font-family:var(--sans);font-size:13.5px;color:var(--tinta-2);margin-top:3px}
+.conflito{background:#FEF3D8;border:2px solid var(--laranja);color:#7A4E06;border-radius:14px;
+  padding:16px 20px;margin-bottom:22px;font-size:14.5px;line-height:1.6}
+.conflito b{display:block;margin-bottom:6px;font-size:15px}
+.cat{margin-bottom:30px}
+.cat>h3{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--tinta-2);margin-bottom:12px;padding-left:2px}
+.q{display:grid;grid-template-columns:46px 1fr 190px;gap:14px;align-items:start;
+  background:var(--papel-2);border:1px solid rgba(37,42,74,.08);border-left:4px solid transparent;
+  border-radius:14px;padding:14px 16px;margin-bottom:9px}
+.q.mexida{border-left-color:var(--laranja);background:#FFFCF4}
+.q .num{font-weight:800;font-size:17px;text-align:center;padding-top:11px;
+  font-variant-numeric:tabular-nums;color:var(--tinta-2)}
+.q textarea,.q input{font:inherit;font-size:14.5px;width:100%;border:1px solid rgba(37,42,74,.16);
+  border-radius:10px;padding:10px 12px;background:#fff;color:var(--tinta);resize:vertical;line-height:1.5}
+.q textarea{min-height:74px}
+.q input{font-weight:700;text-align:center}
+.q textarea:focus,.q input:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px rgba(62,158,78,.16)}
+.q .rot{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--tinta-2);margin-bottom:5px}
+.q .desfazer{margin-top:7px;width:100%}
+.aviso-salvo{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(90px);
+  background:var(--fita);color:#fff;border-radius:999px;padding:12px 26px;font-weight:700;
+  font-size:14.5px;box-shadow:0 8px 26px rgba(0,0,0,.28);transition:transform .28s;z-index:80}
+.aviso-salvo.on{transform:translateX(-50%) translateY(0)}
+@media (max-width:640px){
+  .q{grid-template-columns:38px 1fr}
+  .q .campoGab{grid-column:2}
 }
 
-/* ---------- questão ---------- */
-.palco{
-  position:fixed;inset:0;z-index:60;background:rgba(24,28,52,.76);
-  display:none;place-items:center;padding:clamp(12px,2.5vw,28px);
-  -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
-}
+.palco{position:fixed;inset:0;z-index:60;background:rgba(24,28,52,.76);display:none;place-items:center;
+  padding:clamp(12px,2.5vw,28px);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
 .palco.on{display:grid}
-.folha{
-  background:linear-gradient(163deg,#F6FCF8,#E9F2FC);border-radius:26px;
-  width:min(1040px,100%);max-height:96vh;overflow:auto;
-  padding:clamp(26px,3.4vw,44px) clamp(22px,4vw,52px) clamp(24px,3vw,38px);
-  position:relative;box-shadow:0 26px 70px rgba(0,0,0,.44);
-}
-.sair{
-  position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;
-  border:none;background:rgba(37,42,74,.08);color:var(--tinta-2);font-size:21px;
-  cursor:pointer;line-height:1;
-}
+.folha{background:linear-gradient(163deg,#F6FCF8,#E9F2FC);border-radius:26px;width:min(1040px,100%);
+  max-height:96vh;overflow:auto;padding:clamp(26px,3.4vw,44px) clamp(22px,4vw,52px) clamp(24px,3vw,38px);
+  position:relative;box-shadow:0 26px 70px rgba(0,0,0,.44)}
+.sair{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;border:none;
+  background:rgba(37,42,74,.08);color:var(--tinta-2);font-size:21px;cursor:pointer;line-height:1}
 .sair:hover{background:rgba(37,42,74,.17)}
-.crachá{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:24px;padding-right:46px}
-.crachá .bola{width:70px;height:70px}
-.crachá .bola>span{font-size:29px}
+.cracha{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:24px;padding-right:46px}
+.cracha .bola{width:70px;height:70px} .cracha .bola>span{font-size:29px}
 .selo-tema,.selo-org{border-radius:999px;padding:8px 17px;font-size:13.5px;font-weight:700}
 .selo-tema{background:rgba(62,158,78,.17);color:#1E5A2B}
 .selo-org{background:rgba(37,42,74,.08);color:var(--tinta-2);font-weight:600}
-.pergunta{
-  background:#fff;border-radius:16px;padding:clamp(24px,3vw,32px);
-  font-size:clamp(19px,2.5vw,29px);line-height:1.55;margin-bottom:24px;
-}
-.repetida{
-  display:none;background:#FEF3D8;border:2px solid var(--laranja);color:#7A4E06;
-  border-radius:14px;padding:15px 19px;margin-bottom:22px;font-size:15px;font-weight:600;
-}
+.pergunta{background:#fff;border-radius:16px;padding:clamp(24px,3vw,32px);
+  font-size:clamp(19px,2.5vw,29px);line-height:1.55;margin-bottom:24px;white-space:pre-wrap}
+.repetida{display:none;background:#FEF3D8;border:2px solid var(--laranja);color:#7A4E06;
+  border-radius:14px;padding:15px 19px;margin-bottom:22px;font-size:15px;font-weight:600}
 .repetida.on{display:block}
 .relogio{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}
 .conta{font-size:clamp(38px,6vw,54px);font-weight:800;font-variant-numeric:tabular-nums;min-width:2.8ch}
@@ -185,30 +159,25 @@ body{
 .trilho i{display:block;height:100%;width:100%;background:var(--verde);transition:width 1s linear}
 .trilho i.meio{background:var(--laranja)} .trilho i.fim{background:var(--vermelho)}
 .comandos{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.gabarito{
-  display:none;text-align:center;background:var(--verde);color:#fff;
-  border-radius:20px;padding:clamp(22px,3vw,30px);margin-top:22px;
-}
+.gabarito{display:none;text-align:center;background:var(--verde);color:#fff;border-radius:20px;
+  padding:clamp(22px,3vw,30px);margin-top:22px}
 .gabarito.on{display:block;animation:sobe .34s cubic-bezier(.2,.9,.3,1.1)}
 @keyframes sobe{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
-.gabarito small{
-  display:block;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
-  opacity:.88;margin-bottom:10px;
-}
+.gabarito small{display:block;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+  opacity:.88;margin-bottom:10px}
 .gabarito b{font-size:clamp(36px,7vw,64px);font-weight:800;letter-spacing:-.02em}
 
 .oculto{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .rodape{margin-top:38px;text-align:center;color:var(--tinta-2);font-size:13px}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
-}
+.rodape button{background:none;border:none;font:inherit;color:var(--fita);font-weight:700;
+  cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 </style>
 
 <div class="env">
-  <h2 class="sr">Acerte a Dose: bingo de cálculo de medicação. Escolha um cenário, sorteie uma bolinha e o enunciado aparece com um cronômetro; o resultado do cálculo é o que os alunos marcam na cartela.</h2>
+  <h2 class="sr">Acerte a Dose: bingo de cálculo de medicação. Escolha um cenário, sorteie uma bolinha e o enunciado aparece com um cronômetro; o resultado do cálculo é o que os alunos marcam na cartela. Há também uma aba para editar o banco de questões.</h2>
 
-  <!-- tela 1: escolher cenário -->
   <section id="telaCenarios">
     <div class="selo">
       <h1>Acerte a <em>Dose</em></h1>
@@ -216,10 +185,12 @@ body{
       <p>Escolha o cenário da turma</p>
     </div>
     <div class="cenarios" id="listaCenarios"></div>
-    <p class="rodape">Cálculo de medicação em enfermagem · 60 questões</p>
+    <p class="rodape">
+      Cálculo de medicação em enfermagem · 60 questões ·
+      <button id="irBanco">Banco de questões<span id="selinho"></span></button>
+    </p>
   </section>
 
-  <!-- tela 2: globo -->
   <section id="telaJogo" class="oculto">
     <div class="barra">
       <div class="tituloCen" id="tituloCen"></div>
@@ -234,13 +205,25 @@ body{
       <div id="saidas"><p class="vazio">Nenhuma bolinha sorteada ainda.</p></div>
     </div>
   </section>
+
+  <section id="telaBanco" class="oculto">
+    <div class="cabBanco">
+      <h2>Banco de questões<small id="resumoBanco"></small></h2>
+      <button class="btn claro" id="btnExportar">Baixar cópia</button>
+      <button class="btn claro" id="btnImportar">Carregar cópia</button>
+      <button class="btn claro" id="btnRestaurar">Restaurar tudo</button>
+      <button class="btn" id="btnSairBanco">Voltar</button>
+      <input type="file" id="arquivo" accept=".json,application/json" class="oculto">
+    </div>
+    <div class="conflito oculto" id="conflitos"></div>
+    <div id="listaBanco"></div>
+  </section>
 </div>
 
-<!-- questão -->
 <div class="palco" id="palco" role="dialog" aria-modal="true" aria-labelledby="pergunta">
   <div class="folha">
     <button class="sair" id="btnSair" aria-label="Fechar questão">&#10005;</button>
-    <div class="crachá">
+    <div class="cracha">
       <div class="bola" id="qBola"><span></span></div>
       <span class="selo-tema" id="qTema"></span>
       <span class="selo-org" id="qOrigem"></span>
@@ -262,13 +245,65 @@ body{
   </div>
 </div>
 
+<div class="aviso-salvo" id="avisoSalvo">Alteração salva</div>
+
 <script>
-const CENARIOS = [{"n":1,"grade":3,"seg":120,"part":30,"tempo":"30 min","bolas":[["Gotejamento de soro","Cat. 1 · Q3","Calcular o gotejamento em gotas/min da seguinte solução: SG 10% 250 ml + SF 0,9% 65 ml + KCl 19,1% 3 ml + NaCl 10% 2 ml, para correr EV de 8/8 horas.","13 gotas/min"],["Gotejamento de soro","Cat. 1 · Q4","Quantas microgotas/min deverão correr para administrar 80 ml em 15 minutos?","320 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q7","Quantas microgotas/min deverão correr para administrar 250 ml de SG 5% em 5 horas?","50 mcgt/min"],["Regra de três","Cat. 2 · Q1","Prescrição médica: 500 mg de Ampicilina EV. Temos frasco-ampola de 1 g de Ampicilina reconstituído em 10 ml de diluente. Quantos ml você deve aspirar desta solução?","5 ml"],["Regra de três","Cat. 2 · Q2","Prescrição médica: 250 mg de Amicacina IM. Temos frasco-ampola de 500 mg/2 ml. Quantos ml você deve aspirar?","1 ml"],["Regra de três","Cat. 2 · Q3","Prescrição médica: 60 mg de Gentamicina EV. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar?","1,5 ml"],["Regra de três","Cat. 2 · Q4","Prescrição médica: 70 mg de Amicacina EV. Temos ampolas de 100 mg/2 ml. Quantos ml você deve aspirar?","1,4 ml"],["Regra de três","Cat. 2 · Q12","Prescrição médica: Tobramicina 7,5 mg/kg/dia EV dividida em 3 doses para paciente de 20 kg. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar por dose?","1,25 ml"],["Heparina","Cat. 3 · Q2","Prescrição médica: 1.500 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","0,3 ml"],["Heparina","Cat. 3 · Q3","Temos que administrar 0,3 ml de heparina SC utilizando seringa de insulina (100 UI = 1 ml). Quantas unidades internacionais correspondem a 0,3 ml?","30 UI"],["Heparina","Cat. 3 · Q4","Prescrição médica: heparina EV em BIC — 30.000 UI em 24 horas. Temos heparina a 5.000 UI/ml. A solução deverá ter volume final de 50 ml com SF. Quantos ml de heparina você deve aspirar?","6 ml"],["Insulina","Cat. 4 · Q1","Prescrição médica: insulina regular EV em BIC a 11 UI/h. Temos solução com 100 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","5,5 ml/h"],["Insulina","Cat. 4 · Q3","Prescrição médica: 10 UI de insulina regular SC. Temos frasco de insulina regular na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,1 ml"],["Insulina","Cat. 4 · Q6","Prescrição médica: 0,6 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","60 UI"],["Transformação de soluções e porcentagem","Cat. 5 · Q2","Você deve preparar a seguinte solução e instalar na bomba de seringa: Dopamina 15 mg (5 mg/ml) + Dobutamina 45 mg (12,5 mg/ml) + SG 5% 12 ml. Qual o volume final da solução?","18,6 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q5","Prescrição médica: solução contendo SG 10% 550 ml + SF 0,9% 150 ml + KCl 19,1% 7,5 ml + MgSO4 10% 4,5 ml. Quantos gramas de glicose há na solução?","55 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q7","Joaquim preparou a seguinte solução: AD 200 ml + NaCl 20% 35 ml. Quantos gramas de NaCl contém a solução que Joaquim preparou?","7 g"],["Penicilina Cristalina","Cat. 5 · Q1","Prescrição médica: Penicilina cristalina 2.500.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 6 ml de diluente, quantos ml você deve aspirar desta solução?","2,5 ml"],["Penicilina Cristalina","Cat. 5 · Q3","Prescrição médica: Penicilina cristalina 2.400.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","4,8 ml"],["Penicilina Cristalina","Cat. 5 · Q6","Prescrição médica: Penicilina cristalina 3.000.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 4 ml de diluente, quantos ml você deve aspirar desta solução?","3,6 ml"]]},{"n":2,"grade":3,"seg":90,"part":60,"tempo":"30 min","bolas":[["Gotejamento de soro","Cat. 1 · Q4","Quantas microgotas/min deverão correr para administrar 80 ml em 15 minutos?","320 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q5","Quantas macrogotas/min deverão correr para infundir 500 ml de soro em 12 horas?","14 gotas/min"],["Gotejamento de soro","Cat. 1 · Q11","A prescrição indica 480 ml de solução para correr em 6 horas via bomba de infusão. Quantos ml/h programar?","80 ml/h"],["Gotejamento de soro","Cat. 1 · Q12","Calcular o gotejamento em gotas/min da seguinte solução: SG 5% 500 ml + SF 0,9% 100 ml + KCl 19,1% 5 ml, para correr EV de 10/10 horas.","20 gotas/min"],["Regra de três","Cat. 2 · Q6","Prescrição médica: 150 mg de Metilprednisolona EV. Temos frasco-ampola de 500 mg/8 ml. Quantos ml você deve aspirar?","2,4 ml"],["Regra de três","Cat. 2 · Q8","Prescrição médica: 600 mg de Clindamicina EV. Temos ampolas de 150 mg/ml. Quantos ml você deve aspirar?","4 ml"],["Regra de três","Cat. 2 · Q9","Prescrição médica: 20 mg de Furosemida EV lento. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar?","2 ml"],["Regra de três","Cat. 2 · Q10","Prescrição médica: 8 mg de Morfina SC 4/4h. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar por dose?","0,8 ml"],["Regra de três","Cat. 2 · Q12","Prescrição médica: Tobramicina 7,5 mg/kg/dia EV dividida em 3 doses para paciente de 20 kg. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar por dose?","1,25 ml"],["Heparina","Cat. 3 · Q1","Prescrição médica: 9.000 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","1,8 ml"],["Heparina","Cat. 3 · Q7","Prescrição médica: 750 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,15 ml"],["Heparina","Cat. 3 · Q9","Prescrição médica: heparina EV em BIC a 1.600 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","16 ml/h"],["Heparina","Cat. 3 · Q12","Prescrição médica: 6.000 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","1,2 ml"],["Insulina","Cat. 4 · Q2","Prescrição médica: insulina regular EV em BIC a 17 UI/h. Temos solução com 50 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","17 ml/h"],["Insulina","Cat. 4 · Q4","Prescrição médica: 20 UI de insulina NPH SC. Temos frasco de insulina NPH na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,2 ml"],["Insulina","Cat. 4 · Q7","Prescrição médica: 0,35 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","35 UI"],["Insulina","Cat. 4 · Q11","Prescrição médica: 36 UI de insulina NPH SC. Considerando que 1ml contém 100UI de insulina NPH, quantos ml foram prescritos? ","0,36 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q2","Você deve preparar a seguinte solução e instalar na bomba de seringa: Dopamina 15 mg (5 mg/ml) + Dobutamina 45 mg (12,5 mg/ml) + SG 5% 12 ml. Qual o volume final da solução?","18,6 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q8","Prescrição médica: KCl 15 mEq EV diluído em 100 ml de SF 0,9%. Temos na unidade ampolas de KCl 19,1% onde 1 ml equivale a 2 mEq. Quantos ml de KCl você deve aspirar?","7,5 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q10","Prescrição médica: SG 50% 50 ml + SF 0,9% 200 ml. Quantos gramas de glicose contém a solução total?","25 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q11","Prescrição médica: 38 ml de Glicose 25%. Temos na unidade apenas ampolas de Glicose 50%. Quantos ml de G50% você deve administrar?","19 ml"],["Penicilina Cristalina","Cat. 5 · Q4","Prescrição médica: Penicilina cristalina 4.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 10 ml de diluente, quantos ml você deve aspirar desta solução?","5,6 ml"],["Penicilina Cristalina","Cat. 5 · Q6","Prescrição médica: Penicilina cristalina 3.000.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 4 ml de diluente, quantos ml você deve aspirar desta solução?","3,6 ml"],["Penicilina Cristalina","Cat. 5 · Q9","Prescrição médica: Penicilina cristalina 7.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","8,4 ml"],["Penicilina Cristalina","Cat. 5 · Q12","Prescrição médica: Penicilina cristalina 3.700.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","7,4 ml"]]},{"n":3,"grade":4,"seg":150,"part":30,"tempo":"60 min","bolas":[["Gotejamento de soro","Cat. 1 · Q1","Quantas gotas/min deverão correr para administrar 630 ml de SF 0,9% em 3 horas?","70 gotas/min"],["Gotejamento de soro","Cat. 1 · Q2","Quantas microgotas/min deverão correr para administrar 300 ml de SF 0,9% em 4 horas?","75 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q4","Quantas microgotas/min deverão correr para administrar 80 ml em 15 minutos?","320 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q8","A prescrição indica 45 ml de solução em 30 minutos via bomba de infusão. Quantos ml/h deverão ser programados na bomba?","90 ml/h"],["Gotejamento de soro","Cat. 1 · Q9","Quantas microgotas/min deverão correr para administrar 120 ml em 60 minutos?","120 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q12","Calcular o gotejamento em gotas/min da seguinte solução: SG 5% 500 ml + SF 0,9% 100 ml + KCl 19,1% 5 ml, para correr EV de 10/10 horas.","20 gotas/min"],["Regra de três","Cat. 2 · Q1","Prescrição médica: 500 mg de Ampicilina EV. Temos frasco-ampola de 1 g de Ampicilina reconstituído em 10 ml de diluente. Quantos ml você deve aspirar desta solução?","5 ml"],["Regra de três","Cat. 2 · Q2","Prescrição médica: 250 mg de Amicacina IM. Temos frasco-ampola de 500 mg/2 ml. Quantos ml você deve aspirar?","1 ml"],["Regra de três","Cat. 2 · Q3","Prescrição médica: 60 mg de Gentamicina EV. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar?","1,5 ml"],["Regra de três","Cat. 2 · Q5","Prescrição médica: 120 mg de Teicoplanina EV. Temos frasco-ampola de 200 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","3 ml"],["Regra de três","Cat. 2 · Q7","Prescrição médica: 40 mg de Oxacilina EV. Temos frasco-ampola de 500 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","0,4 ml"],["Regra de três","Cat. 2 · Q8","Prescrição médica: 600 mg de Clindamicina EV. Temos ampolas de 150 mg/ml. Quantos ml você deve aspirar?","4 ml"],["Regra de três","Cat. 2 · Q9","Prescrição médica: 20 mg de Furosemida EV lento. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar?","2 ml"],["Regra de três","Cat. 2 · Q11","Prescrição médica: 25 mcg de Fentanil EV. Temos ampolas de 50 mcg/ml. Quantos ml você deve aspirar?","0,5 ml"],["Heparina","Cat. 3 · Q5","Prescrição médica: 3.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,7 ml"],["Heparina","Cat. 3 · Q6","Prescrição médica: 4.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,9 ml"],["Heparina","Cat. 3 · Q8","Prescrição médica: 8.000 UI de heparina EV em bolus. Temos frasco de 25.000 UI/5 ml. Quantos ml você deve aspirar?","1,6 ml"],["Heparina","Cat. 3 · Q9","Prescrição médica: heparina EV em BIC a 1.600 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","16 ml/h"],["Heparina","Cat. 3 · Q11","Prescrição médica: heparina EV em BIC a 800 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","8 ml/h"],["Insulina","Cat. 4 · Q1","Prescrição médica: insulina regular EV em BIC a 11 UI/h. Temos solução com 100 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","5,5 ml/h"],["Insulina","Cat. 4 · Q3","Prescrição médica: 10 UI de insulina regular SC. Temos frasco de insulina regular na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,1 ml"],["Insulina","Cat. 4 · Q5","Prescrição médica: insulina regular SC na dose de 0,3 UI/kg para paciente de 50 kg. Temos frasco de 100 UI/ml. Quantas UI você deve aspirar na seringa de insulina?","15 UI"],["Insulina","Cat. 4 · Q7","Prescrição médica: 0,35 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","35 UI"],["Insulina","Cat. 4 · Q9","Prescrição médica: 22 UI de insulina NPH. Disponível: Frasco de 100 UI/ml e seringas de 1 ml (graduada em unidades). Qual a marcação na seringa?","22 UI"],["Insulina","Cat. 4 · Q12","Prescrição médica: 28 UI de insulina NPH SC. Considerando que 1ml contém 100UI de insulina NPH, quantos ml foram prescritos?","0,28 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q2","Você deve preparar a seguinte solução e instalar na bomba de seringa: Dopamina 15 mg (5 mg/ml) + Dobutamina 45 mg (12,5 mg/ml) + SG 5% 12 ml. Qual o volume final da solução?","18,6 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q7","Joaquim preparou a seguinte solução: AD 200 ml + NaCl 20% 35 ml. Quantos gramas de NaCl contém a solução que Joaquim preparou?","7 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q8","Prescrição médica: KCl 15 mEq EV diluído em 100 ml de SF 0,9%. Temos na unidade ampolas de KCl 19,1% onde 1 ml equivale a 2 mEq. Quantos ml de KCl você deve aspirar?","7,5 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q10","Prescrição médica: SG 50% 50 ml + SF 0,9% 200 ml. Quantos gramas de glicose contém a solução total?","25 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q11","Prescrição médica: 38 ml de Glicose 25%. Temos na unidade apenas ampolas de Glicose 50%. Quantos ml de G50% você deve administrar?","19 ml"],["Penicilina Cristalina","Cat. 5 · Q1","Prescrição médica: Penicilina cristalina 2.500.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 6 ml de diluente, quantos ml você deve aspirar desta solução?","2,5 ml"],["Penicilina Cristalina","Cat. 5 · Q3","Prescrição médica: Penicilina cristalina 2.400.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","4,8 ml"],["Penicilina Cristalina","Cat. 5 · Q4","Prescrição médica: Penicilina cristalina 4.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 10 ml de diluente, quantos ml você deve aspirar desta solução?","5,6 ml"],["Penicilina Cristalina","Cat. 5 · Q9","Prescrição médica: Penicilina cristalina 7.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","8,4 ml"],["Penicilina Cristalina","Cat. 5 · Q12","Prescrição médica: Penicilina cristalina 3.700.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","7,4 ml"]]},{"n":4,"grade":4,"seg":120,"part":60,"tempo":"60 min","bolas":[["Gotejamento de soro","Cat. 1 · Q1","Quantas gotas/min deverão correr para administrar 630 ml de SF 0,9% em 3 horas?","70 gotas/min"],["Gotejamento de soro","Cat. 1 · Q2","Quantas microgotas/min deverão correr para administrar 300 ml de SF 0,9% em 4 horas?","75 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q3","Calcular o gotejamento em gotas/min da seguinte solução: SG 10% 250 ml + SF 0,9% 65 ml + KCl 19,1% 3 ml + NaCl 10% 2 ml, para correr EV de 8/8 horas.","13 gotas/min"],["Gotejamento de soro","Cat. 1 · Q4","Quantas microgotas/min deverão correr para administrar 80 ml em 15 minutos?","320 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q7","Quantas microgotas/min deverão correr para administrar 250 ml de SG 5% em 5 horas?","50 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q8","A prescrição indica 45 ml de solução em 30 minutos via bomba de infusão. Quantos ml/h deverão ser programados na bomba?","90 ml/h"],["Gotejamento de soro","Cat. 1 · Q10","Quantas microgotas/min deverão correr para administrar 1000 ml em 8 horas?","125 mcgt/min"],["Regra de três","Cat. 2 · Q2","Prescrição médica: 250 mg de Amicacina IM. Temos frasco-ampola de 500 mg/2 ml. Quantos ml você deve aspirar?","1 ml"],["Regra de três","Cat. 2 · Q4","Prescrição médica: 70 mg de Amicacina EV. Temos ampolas de 100 mg/2 ml. Quantos ml você deve aspirar?","1,4 ml"],["Regra de três","Cat. 2 · Q5","Prescrição médica: 120 mg de Teicoplanina EV. Temos frasco-ampola de 200 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","3 ml"],["Regra de três","Cat. 2 · Q6","Prescrição médica: 150 mg de Metilprednisolona EV. Temos frasco-ampola de 500 mg/8 ml. Quantos ml você deve aspirar?","2,4 ml"],["Regra de três","Cat. 2 · Q7","Prescrição médica: 40 mg de Oxacilina EV. Temos frasco-ampola de 500 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","0,4 ml"],["Regra de três","Cat. 2 · Q8","Prescrição médica: 600 mg de Clindamicina EV. Temos ampolas de 150 mg/ml. Quantos ml você deve aspirar?","4 ml"],["Regra de três","Cat. 2 · Q10","Prescrição médica: 8 mg de Morfina SC 4/4h. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar por dose?","0,8 ml"],["Regra de três","Cat. 2 · Q11","Prescrição médica: 25 mcg de Fentanil EV. Temos ampolas de 50 mcg/ml. Quantos ml você deve aspirar?","0,5 ml"],["Regra de três","Cat. 2 · Q12","Prescrição médica: Tobramicina 7,5 mg/kg/dia EV dividida em 3 doses para paciente de 20 kg. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar por dose?","1,25 ml"],["Heparina","Cat. 3 · Q2","Prescrição médica: 1.500 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","0,3 ml"],["Heparina","Cat. 3 · Q5","Prescrição médica: 3.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,7 ml"],["Heparina","Cat. 3 · Q7","Prescrição médica: 750 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,15 ml"],["Heparina","Cat. 3 · Q9","Prescrição médica: heparina EV em BIC a 1.600 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","16 ml/h"],["Heparina","Cat. 3 · Q10","Prescrição médica: 3.000 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,6 ml"],["Heparina","Cat. 3 · Q11","Prescrição médica: heparina EV em BIC a 800 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","8 ml/h"],["Insulina","Cat. 4 · Q1","Prescrição médica: insulina regular EV em BIC a 11 UI/h. Temos solução com 100 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","5,5 ml/h"],["Insulina","Cat. 4 · Q3","Prescrição médica: 10 UI de insulina regular SC. Temos frasco de insulina regular na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,1 ml"],["Insulina","Cat. 4 · Q4","Prescrição médica: 20 UI de insulina NPH SC. Temos frasco de insulina NPH na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,2 ml"],["Insulina","Cat. 4 · Q6","Prescrição médica: 0,6 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","60 UI"],["Insulina","Cat. 4 · Q9","Prescrição médica: 22 UI de insulina NPH. Disponível: Frasco de 100 UI/ml e seringas de 1 ml (graduada em unidades). Qual a marcação na seringa?","22 UI"],["Insulina","Cat. 4 · Q11","Prescrição médica: 36 UI de insulina NPH SC. Considerando que 1ml contém 100UI de insulina NPH, quantos ml foram prescritos? ","0,36 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q2","Você deve preparar a seguinte solução e instalar na bomba de seringa: Dopamina 15 mg (5 mg/ml) + Dobutamina 45 mg (12,5 mg/ml) + SG 5% 12 ml. Qual o volume final da solução?","18,6 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q5","Prescrição médica: solução contendo SG 10% 550 ml + SF 0,9% 150 ml + KCl 19,1% 7,5 ml + MgSO4 10% 4,5 ml. Quantos gramas de glicose há na solução?","55 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q7","Joaquim preparou a seguinte solução: AD 200 ml + NaCl 20% 35 ml. Quantos gramas de NaCl contém a solução que Joaquim preparou?","7 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q8","Prescrição médica: KCl 15 mEq EV diluído em 100 ml de SF 0,9%. Temos na unidade ampolas de KCl 19,1% onde 1 ml equivale a 2 mEq. Quantos ml de KCl você deve aspirar?","7,5 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q10","Prescrição médica: SG 50% 50 ml + SF 0,9% 200 ml. Quantos gramas de glicose contém a solução total?","25 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q11","Prescrição médica: 38 ml de Glicose 25%. Temos na unidade apenas ampolas de Glicose 50%. Quantos ml de G50% você deve administrar?","19 ml"],["Penicilina Cristalina","Cat. 5 · Q1","Prescrição médica: Penicilina cristalina 2.500.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 6 ml de diluente, quantos ml você deve aspirar desta solução?","2,5 ml"],["Penicilina Cristalina","Cat. 5 · Q3","Prescrição médica: Penicilina cristalina 2.400.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","4,8 ml"],["Penicilina Cristalina","Cat. 5 · Q4","Prescrição médica: Penicilina cristalina 4.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 10 ml de diluente, quantos ml você deve aspirar desta solução?","5,6 ml"],["Penicilina Cristalina","Cat. 5 · Q6","Prescrição médica: Penicilina cristalina 3.000.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 4 ml de diluente, quantos ml você deve aspirar desta solução?","3,6 ml"],["Penicilina Cristalina","Cat. 5 · Q9","Prescrição médica: Penicilina cristalina 7.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","8,4 ml"],["Penicilina Cristalina","Cat. 5 · Q12","Prescrição médica: Penicilina cristalina 3.700.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","7,4 ml"]]},{"n":5,"grade":5,"seg":180,"part":30,"tempo":"100 min","bolas":[["Gotejamento de soro","Cat. 1 · Q1","Quantas gotas/min deverão correr para administrar 630 ml de SF 0,9% em 3 horas?","70 gotas/min"],["Gotejamento de soro","Cat. 1 · Q3","Calcular o gotejamento em gotas/min da seguinte solução: SG 10% 250 ml + SF 0,9% 65 ml + KCl 19,1% 3 ml + NaCl 10% 2 ml, para correr EV de 8/8 horas.","13 gotas/min"],["Gotejamento de soro","Cat. 1 · Q4","Quantas microgotas/min deverão correr para administrar 80 ml em 15 minutos?","320 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q5","Quantas macrogotas/min deverão correr para infundir 500 ml de soro em 12 horas?","14 gotas/min"],["Gotejamento de soro","Cat. 1 · Q6","Quantas gotas/min deverão correr para administrar 540 ml de SF 0,9% em 4 horas?","45 gotas/min"],["Gotejamento de soro","Cat. 1 · Q7","Quantas microgotas/min deverão correr para administrar 250 ml de SG 5% em 5 horas?","50 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q8","A prescrição indica 45 ml de solução em 30 minutos via bomba de infusão. Quantos ml/h deverão ser programados na bomba?","90 ml/h"],["Gotejamento de soro","Cat. 1 · Q10","Quantas microgotas/min deverão correr para administrar 1000 ml em 8 horas?","125 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q11","A prescrição indica 480 ml de solução para correr em 6 horas via bomba de infusão. Quantos ml/h programar?","80 ml/h"],["Gotejamento de soro","Cat. 1 · Q12","Calcular o gotejamento em gotas/min da seguinte solução: SG 5% 500 ml + SF 0,9% 100 ml + KCl 19,1% 5 ml, para correr EV de 10/10 horas.","20 gotas/min"],["Regra de três","Cat. 2 · Q1","Prescrição médica: 500 mg de Ampicilina EV. Temos frasco-ampola de 1 g de Ampicilina reconstituído em 10 ml de diluente. Quantos ml você deve aspirar desta solução?","5 ml"],["Regra de três","Cat. 2 · Q2","Prescrição médica: 250 mg de Amicacina IM. Temos frasco-ampola de 500 mg/2 ml. Quantos ml você deve aspirar?","1 ml"],["Regra de três","Cat. 2 · Q3","Prescrição médica: 60 mg de Gentamicina EV. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar?","1,5 ml"],["Regra de três","Cat. 2 · Q4","Prescrição médica: 70 mg de Amicacina EV. Temos ampolas de 100 mg/2 ml. Quantos ml você deve aspirar?","1,4 ml"],["Regra de três","Cat. 2 · Q7","Prescrição médica: 40 mg de Oxacilina EV. Temos frasco-ampola de 500 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","0,4 ml"],["Regra de três","Cat. 2 · Q8","Prescrição médica: 600 mg de Clindamicina EV. Temos ampolas de 150 mg/ml. Quantos ml você deve aspirar?","4 ml"],["Regra de três","Cat. 2 · Q9","Prescrição médica: 20 mg de Furosemida EV lento. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar?","2 ml"],["Regra de três","Cat. 2 · Q10","Prescrição médica: 8 mg de Morfina SC 4/4h. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar por dose?","0,8 ml"],["Regra de três","Cat. 2 · Q11","Prescrição médica: 25 mcg de Fentanil EV. Temos ampolas de 50 mcg/ml. Quantos ml você deve aspirar?","0,5 ml"],["Regra de três","Cat. 2 · Q12","Prescrição médica: Tobramicina 7,5 mg/kg/dia EV dividida em 3 doses para paciente de 20 kg. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar por dose?","1,25 ml"],["Heparina","Cat. 3 · Q2","Prescrição médica: 1.500 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","0,3 ml"],["Heparina","Cat. 3 · Q3","Temos que administrar 0,3 ml de heparina SC utilizando seringa de insulina (100 UI = 1 ml). Quantas unidades internacionais correspondem a 0,3 ml?","30 UI"],["Heparina","Cat. 3 · Q4","Prescrição médica: heparina EV em BIC — 30.000 UI em 24 horas. Temos heparina a 5.000 UI/ml. A solução deverá ter volume final de 50 ml com SF. Quantos ml de heparina você deve aspirar?","6 ml"],["Heparina","Cat. 3 · Q5","Prescrição médica: 3.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,7 ml"],["Heparina","Cat. 3 · Q6","Prescrição médica: 4.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,9 ml"],["Heparina","Cat. 3 · Q7","Prescrição médica: 750 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,15 ml"],["Heparina","Cat. 3 · Q8","Prescrição médica: 8.000 UI de heparina EV em bolus. Temos frasco de 25.000 UI/5 ml. Quantos ml você deve aspirar?","1,6 ml"],["Heparina","Cat. 3 · Q11","Prescrição médica: heparina EV em BIC a 800 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","8 ml/h"],["Heparina","Cat. 3 · Q12","Prescrição médica: 6.000 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","1,2 ml"],["Insulina","Cat. 4 · Q2","Prescrição médica: insulina regular EV em BIC a 17 UI/h. Temos solução com 50 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","17 ml/h"],["Insulina","Cat. 4 · Q4","Prescrição médica: 20 UI de insulina NPH SC. Temos frasco de insulina NPH na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,2 ml"],["Insulina","Cat. 4 · Q5","Prescrição médica: insulina regular SC na dose de 0,3 UI/kg para paciente de 50 kg. Temos frasco de 100 UI/ml. Quantas UI você deve aspirar na seringa de insulina?","15 UI"],["Insulina","Cat. 4 · Q6","Prescrição médica: 0,6 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","60 UI"],["Insulina","Cat. 4 · Q7","Prescrição médica: 0,35 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","35 UI"],["Insulina","Cat. 4 · Q8","Prescrição médica: insulina regular SC na dose de 0,3 UI/kg para paciente de 60 kg. Temos frasco de 100 UI/ml. Quantas UI você deve aspirar na seringa de insulina?","18 UI"],["Insulina","Cat. 4 · Q9","Prescrição médica: 22 UI de insulina NPH. Disponível: Frasco de 100 UI/ml e seringas de 1 ml (graduada em unidades). Qual a marcação na seringa?","22 UI"],["Insulina","Cat. 4 · Q10","Prescrição médica: insulina regular EV em BIC a 11 UI/h. Temos seringa com 50 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","11 ml/h"],["Insulina","Cat. 4 · Q12","Prescrição médica: 28 UI de insulina NPH SC. Considerando que 1ml contém 100UI de insulina NPH, quantos ml foram prescritos?","0,28 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q2","Você deve preparar a seguinte solução e instalar na bomba de seringa: Dopamina 15 mg (5 mg/ml) + Dobutamina 45 mg (12,5 mg/ml) + SG 5% 12 ml. Qual o volume final da solução?","18,6 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q5","Prescrição médica: solução contendo SG 10% 550 ml + SF 0,9% 150 ml + KCl 19,1% 7,5 ml + MgSO4 10% 4,5 ml. Quantos gramas de glicose há na solução?","55 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q7","Joaquim preparou a seguinte solução: AD 200 ml + NaCl 20% 35 ml. Quantos gramas de NaCl contém a solução que Joaquim preparou?","7 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q8","Prescrição médica: KCl 15 mEq EV diluído em 100 ml de SF 0,9%. Temos na unidade ampolas de KCl 19,1% onde 1 ml equivale a 2 mEq. Quantos ml de KCl você deve aspirar?","7,5 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q10","Prescrição médica: SG 50% 50 ml + SF 0,9% 200 ml. Quantos gramas de glicose contém a solução total?","25 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q11","Prescrição médica: 38 ml de Glicose 25%. Temos na unidade apenas ampolas de Glicose 50%. Quantos ml de G50% você deve administrar?","19 ml"],["Penicilina Cristalina","Cat. 5 · Q1","Prescrição médica: Penicilina cristalina 2.500.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 6 ml de diluente, quantos ml você deve aspirar desta solução?","2,5 ml"],["Penicilina Cristalina","Cat. 5 · Q3","Prescrição médica: Penicilina cristalina 2.400.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","4,8 ml"],["Penicilina Cristalina","Cat. 5 · Q4","Prescrição médica: Penicilina cristalina 4.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 10 ml de diluente, quantos ml você deve aspirar desta solução?","5,6 ml"],["Penicilina Cristalina","Cat. 5 · Q6","Prescrição médica: Penicilina cristalina 3.000.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 4 ml de diluente, quantos ml você deve aspirar desta solução?","3,6 ml"],["Penicilina Cristalina","Cat. 5 · Q9","Prescrição médica: Penicilina cristalina 7.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","8,4 ml"],["Penicilina Cristalina","Cat. 5 · Q12","Prescrição médica: Penicilina cristalina 3.700.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","7,4 ml"]]},{"n":6,"grade":5,"seg":150,"part":60,"tempo":"100 min","bolas":[["Gotejamento de soro","Cat. 1 · Q1","Quantas gotas/min deverão correr para administrar 630 ml de SF 0,9% em 3 horas?","70 gotas/min"],["Gotejamento de soro","Cat. 1 · Q2","Quantas microgotas/min deverão correr para administrar 300 ml de SF 0,9% em 4 horas?","75 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q3","Calcular o gotejamento em gotas/min da seguinte solução: SG 10% 250 ml + SF 0,9% 65 ml + KCl 19,1% 3 ml + NaCl 10% 2 ml, para correr EV de 8/8 horas.","13 gotas/min"],["Gotejamento de soro","Cat. 1 · Q4","Quantas microgotas/min deverão correr para administrar 80 ml em 15 minutos?","320 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q5","Quantas macrogotas/min deverão correr para infundir 500 ml de soro em 12 horas?","14 gotas/min"],["Gotejamento de soro","Cat. 1 · Q6","Quantas gotas/min deverão correr para administrar 540 ml de SF 0,9% em 4 horas?","45 gotas/min"],["Gotejamento de soro","Cat. 1 · Q7","Quantas microgotas/min deverão correr para administrar 250 ml de SG 5% em 5 horas?","50 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q8","A prescrição indica 45 ml de solução em 30 minutos via bomba de infusão. Quantos ml/h deverão ser programados na bomba?","90 ml/h"],["Gotejamento de soro","Cat. 1 · Q9","Quantas microgotas/min deverão correr para administrar 120 ml em 60 minutos?","120 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q10","Quantas microgotas/min deverão correr para administrar 1000 ml em 8 horas?","125 mcgt/min"],["Gotejamento de soro","Cat. 1 · Q11","A prescrição indica 480 ml de solução para correr em 6 horas via bomba de infusão. Quantos ml/h programar?","80 ml/h"],["Gotejamento de soro","Cat. 1 · Q12","Calcular o gotejamento em gotas/min da seguinte solução: SG 5% 500 ml + SF 0,9% 100 ml + KCl 19,1% 5 ml, para correr EV de 10/10 horas.","20 gotas/min"],["Regra de três","Cat. 2 · Q1","Prescrição médica: 500 mg de Ampicilina EV. Temos frasco-ampola de 1 g de Ampicilina reconstituído em 10 ml de diluente. Quantos ml você deve aspirar desta solução?","5 ml"],["Regra de três","Cat. 2 · Q2","Prescrição médica: 250 mg de Amicacina IM. Temos frasco-ampola de 500 mg/2 ml. Quantos ml você deve aspirar?","1 ml"],["Regra de três","Cat. 2 · Q3","Prescrição médica: 60 mg de Gentamicina EV. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar?","1,5 ml"],["Regra de três","Cat. 2 · Q4","Prescrição médica: 70 mg de Amicacina EV. Temos ampolas de 100 mg/2 ml. Quantos ml você deve aspirar?","1,4 ml"],["Regra de três","Cat. 2 · Q5","Prescrição médica: 120 mg de Teicoplanina EV. Temos frasco-ampola de 200 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","3 ml"],["Regra de três","Cat. 2 · Q6","Prescrição médica: 150 mg de Metilprednisolona EV. Temos frasco-ampola de 500 mg/8 ml. Quantos ml você deve aspirar?","2,4 ml"],["Regra de três","Cat. 2 · Q7","Prescrição médica: 40 mg de Oxacilina EV. Temos frasco-ampola de 500 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","0,4 ml"],["Regra de três","Cat. 2 · Q8","Prescrição médica: 600 mg de Clindamicina EV. Temos ampolas de 150 mg/ml. Quantos ml você deve aspirar?","4 ml"],["Regra de três","Cat. 2 · Q9","Prescrição médica: 20 mg de Furosemida EV lento. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar?","2 ml"],["Regra de três","Cat. 2 · Q10","Prescrição médica: 8 mg de Morfina SC 4/4h. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar por dose?","0,8 ml"],["Regra de três","Cat. 2 · Q11","Prescrição médica: 25 mcg de Fentanil EV. Temos ampolas de 50 mcg/ml. Quantos ml você deve aspirar?","0,5 ml"],["Regra de três","Cat. 2 · Q12","Prescrição médica: Tobramicina 7,5 mg/kg/dia EV dividida em 3 doses para paciente de 20 kg. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar por dose?","1,25 ml"],["Heparina","Cat. 3 · Q1","Prescrição médica: 9.000 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","1,8 ml"],["Heparina","Cat. 3 · Q2","Prescrição médica: 1.500 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","0,3 ml"],["Heparina","Cat. 3 · Q3","Temos que administrar 0,3 ml de heparina SC utilizando seringa de insulina (100 UI = 1 ml). Quantas unidades internacionais correspondem a 0,3 ml?","30 UI"],["Heparina","Cat. 3 · Q4","Prescrição médica: heparina EV em BIC — 30.000 UI em 24 horas. Temos heparina a 5.000 UI/ml. A solução deverá ter volume final de 50 ml com SF. Quantos ml de heparina você deve aspirar?","6 ml"],["Heparina","Cat. 3 · Q5","Prescrição médica: 3.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,7 ml"],["Heparina","Cat. 3 · Q6","Prescrição médica: 4.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,9 ml"],["Heparina","Cat. 3 · Q7","Prescrição médica: 750 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,15 ml"],["Heparina","Cat. 3 · Q8","Prescrição médica: 8.000 UI de heparina EV em bolus. Temos frasco de 25.000 UI/5 ml. Quantos ml você deve aspirar?","1,6 ml"],["Heparina","Cat. 3 · Q9","Prescrição médica: heparina EV em BIC a 1.600 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","16 ml/h"],["Heparina","Cat. 3 · Q10","Prescrição médica: 3.000 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,6 ml"],["Heparina","Cat. 3 · Q11","Prescrição médica: heparina EV em BIC a 800 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","8 ml/h"],["Heparina","Cat. 3 · Q12","Prescrição médica: 6.000 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","1,2 ml"],["Insulina","Cat. 4 · Q1","Prescrição médica: insulina regular EV em BIC a 11 UI/h. Temos solução com 100 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","5,5 ml/h"],["Insulina","Cat. 4 · Q2","Prescrição médica: insulina regular EV em BIC a 17 UI/h. Temos solução com 50 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","17 ml/h"],["Insulina","Cat. 4 · Q3","Prescrição médica: 10 UI de insulina regular SC. Temos frasco de insulina regular na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,1 ml"],["Insulina","Cat. 4 · Q4","Prescrição médica: 20 UI de insulina NPH SC. Temos frasco de insulina NPH na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,2 ml"],["Insulina","Cat. 4 · Q5","Prescrição médica: insulina regular SC na dose de 0,3 UI/kg para paciente de 50 kg. Temos frasco de 100 UI/ml. Quantas UI você deve aspirar na seringa de insulina?","15 UI"],["Insulina","Cat. 4 · Q6","Prescrição médica: 0,6 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","60 UI"],["Insulina","Cat. 4 · Q7","Prescrição médica: 0,35 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","35 UI"],["Insulina","Cat. 4 · Q8","Prescrição médica: insulina regular SC na dose de 0,3 UI/kg para paciente de 60 kg. Temos frasco de 100 UI/ml. Quantas UI você deve aspirar na seringa de insulina?","18 UI"],["Insulina","Cat. 4 · Q9","Prescrição médica: 22 UI de insulina NPH. Disponível: Frasco de 100 UI/ml e seringas de 1 ml (graduada em unidades). Qual a marcação na seringa?","22 UI"],["Insulina","Cat. 4 · Q10","Prescrição médica: insulina regular EV em BIC a 11 UI/h. Temos seringa com 50 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","11 ml/h"],["Insulina","Cat. 4 · Q11","Prescrição médica: 36 UI de insulina NPH SC. Considerando que 1ml contém 100UI de insulina NPH, quantos ml foram prescritos? ","0,36 ml"],["Insulina","Cat. 4 · Q12","Prescrição médica: 28 UI de insulina NPH SC. Considerando que 1ml contém 100UI de insulina NPH, quantos ml foram prescritos?","0,28 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q2","Você deve preparar a seguinte solução e instalar na bomba de seringa: Dopamina 15 mg (5 mg/ml) + Dobutamina 45 mg (12,5 mg/ml) + SG 5% 12 ml. Qual o volume final da solução?","18,6 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q5","Prescrição médica: solução contendo SG 10% 550 ml + SF 0,9% 150 ml + KCl 19,1% 7,5 ml + MgSO4 10% 4,5 ml. Quantos gramas de glicose há na solução?","55 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q7","Joaquim preparou a seguinte solução: AD 200 ml + NaCl 20% 35 ml. Quantos gramas de NaCl contém a solução que Joaquim preparou?","7 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q8","Prescrição médica: KCl 15 mEq EV diluído em 100 ml de SF 0,9%. Temos na unidade ampolas de KCl 19,1% onde 1 ml equivale a 2 mEq. Quantos ml de KCl você deve aspirar?","7,5 ml"],["Transformação de soluções e porcentagem","Cat. 5 · Q10","Prescrição médica: SG 50% 50 ml + SF 0,9% 200 ml. Quantos gramas de glicose contém a solução total?","25 g"],["Transformação de soluções e porcentagem","Cat. 5 · Q11","Prescrição médica: 38 ml de Glicose 25%. Temos na unidade apenas ampolas de Glicose 50%. Quantos ml de G50% você deve administrar?","19 ml"],["Penicilina Cristalina","Cat. 5 · Q1","Prescrição médica: Penicilina cristalina 2.500.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 6 ml de diluente, quantos ml você deve aspirar desta solução?","2,5 ml"],["Penicilina Cristalina","Cat. 5 · Q3","Prescrição médica: Penicilina cristalina 2.400.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","4,8 ml"],["Penicilina Cristalina","Cat. 5 · Q4","Prescrição médica: Penicilina cristalina 4.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 10 ml de diluente, quantos ml você deve aspirar desta solução?","5,6 ml"],["Penicilina Cristalina","Cat. 5 · Q6","Prescrição médica: Penicilina cristalina 3.000.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 4 ml de diluente, quantos ml você deve aspirar desta solução?","3,6 ml"],["Penicilina Cristalina","Cat. 5 · Q9","Prescrição médica: Penicilina cristalina 7.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","8,4 ml"],["Penicilina Cristalina","Cat. 5 · Q12","Prescrição médica: Penicilina cristalina 3.700.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","7,4 ml"]]}];
+const BANCO_ORIGINAL = {"1":{"1":["Quantas gotas/min deverão correr para administrar 630 ml de SF 0,9% em 3 horas?","70 gotas/min"],"2":["Quantas microgotas/min deverão correr para administrar 300 ml de SF 0,9% em 4 horas?","75 mcgt/min"],"3":["Calcular o gotejamento em gotas/min da seguinte solução: SG 10% 250 ml + SF 0,9% 65 ml + KCl 19,1% 3 ml + NaCl 10% 2 ml, para correr EV de 8/8 horas.","13 gotas/min"],"4":["Quantas microgotas/min deverão correr para administrar 80 ml em 15 minutos?","107 gotas/min"],"5":["Quantas macrogotas/min deverão correr para infundir 500 ml de soro em 12 horas?","14 gotas/min"],"6":["Quantas gotas/min deverão correr para administrar 540 ml de SF 0,9% em 4 horas?","45 gotas/min"],"7":["Quantas microgotas/min deverão correr para administrar 250 ml de SG 5% em 5 horas?","50 mcgt/min"],"8":["A prescrição indica 45 ml de solução em 30 minutos via bomba de infusão. Quantos ml/h deverão ser programados na bomba?","90 ml/h"],"9":["Quantas microgotas/min deverão correr para administrar 120 ml em 60 minutos?","120 mcgt/min"],"10":["Quantas microgotas/min deverão correr para administrar 1000 ml em 8 horas?","125 mcgt/min"],"11":["A prescrição indica 480 ml de solução para correr em 6 horas via bomba de infusão. Quantos ml/h programar?","80 ml/h"],"12":["Calcular o gotejamento em gotas/min da seguinte solução: SG 5% 500 ml + SF 0,9% 100 ml + KCl 19,1% 5 ml, para correr EV de 10/10 horas.","20 gotas/min"]},"2":{"1":["Prescrição médica: 500 mg de Ampicilina EV. Temos frasco-ampola de 1 g de Ampicilina reconstituído em 10 ml de diluente. Quantos ml você deve aspirar desta solução?","5 ml"],"2":["Prescrição médica: 250 mg de Amicacina IM. Temos frasco-ampola de 500 mg/2 ml. Quantos ml você deve aspirar?","1 ml"],"3":["Prescrição médica: 60 mg de Gentamicina EV. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar?","1,5 ml"],"4":["Prescrição médica: 70 mg de Amicacina EV. Temos ampolas de 100 mg/2 ml. Quantos ml você deve aspirar?","1,4 ml"],"5":["Prescrição médica: 120 mg de Teicoplanina EV. Temos frasco-ampola de 200 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","3 ml"],"6":["Prescrição médica: 150 mg de Metilprednisolona EV. Temos frasco-ampola de 500 mg/8 ml. Quantos ml você deve aspirar?","2,4 ml"],"7":["Prescrição médica: 40 mg de Oxacilina EV. Temos frasco-ampola de 500 mg reconstituído em 5 ml de diluente. Quantos ml você deve aspirar desta solução?","0,4 ml"],"8":["Prescrição médica: 600 mg de Clindamicina EV. Temos ampolas de 150 mg/ml. Quantos ml você deve aspirar?","4 ml"],"9":["Prescrição médica: 20 mg de Furosemida EV lento. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar?","2 ml"],"10":["Prescrição médica: 8 mg de Morfina SC 4/4h. Temos ampolas de 10 mg/ml. Quantos ml você deve aspirar por dose?","0,8 ml"],"11":["Prescrição médica: 25 mcg de Fentanil EV. Temos ampolas de 50 mcg/ml. Quantos ml você deve aspirar?","0,5 ml"],"12":["Prescrição médica: Tobramicina 7,5 mg/kg/dia EV dividida em 3 doses para paciente de 20 kg. Temos ampolas de 40 mg/ml. Quantos ml você deve aspirar por dose?","1,25 ml"]},"3":{"1":["Prescrição médica: 9.000 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","1,8 ml"],"2":["Prescrição médica: 1.500 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","0,3 ml"],"3":["Temos que administrar 0,3 ml de heparina SC utilizando seringa de insulina (100 UI = 1 ml). Quantas unidades internacionais correspondem a 0,3 ml?","30 UI"],"4":["Prescrição médica: heparina EV em BIC — 30.000 UI em 24 horas. Temos heparina a 5.000 UI/ml. A solução deverá ter volume final de 50 ml com SF. Quantos ml de heparina você deve aspirar?","6 ml"],"5":["Prescrição médica: 3.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,7 ml"],"6":["Prescrição médica: 4.500 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,9 ml"],"7":["Prescrição médica: 750 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,15 ml"],"8":["Prescrição médica: 8.000 UI de heparina EV em bolus. Temos frasco de 25.000 UI/5 ml. Quantos ml você deve aspirar?","1,6 ml"],"9":["Prescrição médica: heparina EV em BIC a 1.600 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","16 ml/h"],"10":["Prescrição médica: 3.000 UI de heparina por via SC. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar?","0,6 ml"],"11":["Prescrição médica: heparina EV em BIC a 800 UI/h. A solução foi preparada com 25.000 UI em 250 ml de SF. Quantos ml/h você deve programar na bomba de infusão?","8 ml/h"],"12":["Prescrição médica: 6.000 UI de heparina por via SC 12/12h. Temos frasco de 5.000 UI/ml. Quantos ml você deve administrar por dose?","1,2 ml"]},"4":{"1":["Prescrição médica: insulina regular EV em BIC a 11 UI/h. Temos solução com 100 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","5,5 ml/h"],"2":["Prescrição médica: insulina regular EV em BIC a 17 UI/h. Temos solução com 50 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","17 ml/h"],"3":["Prescrição médica: 10 UI de insulina regular SC. Temos frasco de insulina regular na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,1 ml"],"4":["Prescrição médica: 20 UI de insulina NPH SC. Temos frasco de insulina NPH na concentração de 100 UI/ml e seringas de 3 ml. Quantos ml você deve aspirar?","0,2 ml"],"5":["Prescrição médica: insulina regular SC na dose de 0,3 UI/kg para paciente de 50 kg. Temos frasco de 100 UI/ml. Quantas UI você deve aspirar na seringa de insulina?","15 UI"],"6":["Prescrição médica: 0,6 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","60 UI"],"7":["Prescrição médica: 0,35 ml de insulina de um frasco de 100 UI/ml. Quantas unidades ele recebe por dose?","35 UI"],"8":["Prescrição médica: insulina regular SC na dose de 0,3 UI/kg para paciente de 60 kg. Temos frasco de 100 UI/ml. Quantas UI você deve aspirar na seringa de insulina?","18 UI"],"9":["Prescrição médica: 22 UI de insulina NPH. Disponível: Frasco de 100 UI/ml e seringas de 1 ml (graduada em unidades). Qual a marcação na seringa?","22 UI"],"10":["Prescrição médica: insulina regular EV em BIC a 11 UI/h. Temos seringa com 50 UI de insulina diluídas em SF para volume total de 50 ml. Quantos ml/h você deve programar na bomba de infusão?","11 ml/h"],"11":["Prescrição médica: 36 UI de insulina NPH SC. Considerando que 1ml contém 100UI de insulina NPH, quantos ml foram prescritos? ","0,36 ml"],"12":["Prescrição médica: 28 UI de insulina NPH SC. Considerando que 1ml contém 100UI de insulina NPH, quantos ml foram prescritos?","0,28 ml"]},"5":{"1":["Prescrição médica: Penicilina cristalina 2.500.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 6 ml de diluente, quantos ml você deve aspirar desta solução?","2,5 ml"],"2":["Você deve preparar a seguinte solução e instalar na bomba de seringa: Dopamina 15 mg (5 mg/ml) + Dobutamina 45 mg (12,5 mg/ml) + SG 5% 12 ml. Qual o volume final da solução?","18,6 ml"],"3":["Prescrição médica: Penicilina cristalina 2.400.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","4,8 ml"],"4":["Prescrição médica: Penicilina cristalina 4.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 10 ml de diluente, quantos ml você deve aspirar desta solução?","5,6 ml"],"5":["Prescrição médica: solução contendo SG 10% 550 ml + SF 0,9% 150 ml + KCl 19,1% 7,5 ml + MgSO4 10% 4,5 ml. Quantos gramas de glicose há na solução?","55 g"],"6":["Prescrição médica: Penicilina cristalina 3.000.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 4 ml de diluente, quantos ml você deve aspirar desta solução?","3,6 ml"],"7":["Joaquim preparou a seguinte solução: AD 200 ml + NaCl 20% 35 ml. Quantos gramas de NaCl contém a solução que Joaquim preparou?","7 g"],"8":["Prescrição médica: KCl 15 mEq EV diluído em 100 ml de SF 0,9%. Temos na unidade ampolas de KCl 19,1% onde 1 ml equivale a 2 mEq. Quantos ml de KCl você deve aspirar?","7,5 ml"],"9":["Prescrição médica: Penicilina cristalina 7.000.000 UI. Considerando que na unidade temos frasco-ampola de 10.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","8,4 ml"],"10":["Prescrição médica: SG 50% 50 ml + SF 0,9% 200 ml. Quantos gramas de glicose contém a solução total?","25 g"],"11":["Prescrição médica: 38 ml de Glicose 25%. Temos na unidade apenas ampolas de Glicose 50%. Quantos ml de G50% você deve administrar?","19 ml"],"12":["Prescrição médica: Penicilina cristalina 3.700.000 UI. Considerando que na unidade temos frasco-ampola de 5.000.000 que será diluído em 8 ml de diluente, quantos ml você deve aspirar desta solução?","7,4 ml"]}};
+const CENARIOS = [{"n":1,"grade":3,"seg":120,"part":30,"tempo":"30 min","bolas":[[1,3,0],[1,4,0],[1,7,0],[2,1,1],[2,2,1],[2,3,1],[2,4,1],[2,12,1],[3,2,2],[3,3,2],[3,4,2],[4,1,3],[4,3,3],[4,6,3],[5,2,4],[5,5,4],[5,7,4],[5,1,5],[5,3,5],[5,6,5]]},{"n":2,"grade":3,"seg":90,"part":60,"tempo":"30 min","bolas":[[1,4,0],[1,5,0],[1,11,0],[1,12,0],[2,6,1],[2,8,1],[2,9,1],[2,10,1],[2,12,1],[3,1,2],[3,7,2],[3,9,2],[3,12,2],[4,2,3],[4,4,3],[4,7,3],[4,11,3],[5,2,4],[5,8,4],[5,10,4],[5,11,4],[5,4,5],[5,6,5],[5,9,5],[5,12,5]]},{"n":3,"grade":4,"seg":150,"part":30,"tempo":"60 min","bolas":[[1,1,0],[1,2,0],[1,4,0],[1,8,0],[1,9,0],[1,12,0],[2,1,1],[2,2,1],[2,3,1],[2,5,1],[2,7,1],[2,8,1],[2,9,1],[2,11,1],[3,5,2],[3,6,2],[3,8,2],[3,9,2],[3,11,2],[4,1,3],[4,3,3],[4,5,3],[4,7,3],[4,9,3],[4,12,3],[5,2,4],[5,7,4],[5,8,4],[5,10,4],[5,11,4],[5,1,5],[5,3,5],[5,4,5],[5,9,5],[5,12,5]]},{"n":4,"grade":4,"seg":120,"part":60,"tempo":"60 min","bolas":[[1,1,0],[1,2,0],[1,3,0],[1,4,0],[1,7,0],[1,8,0],[1,10,0],[2,2,1],[2,4,1],[2,5,1],[2,6,1],[2,7,1],[2,8,1],[2,10,1],[2,11,1],[2,12,1],[3,2,2],[3,5,2],[3,7,2],[3,9,2],[3,10,2],[3,11,2],[4,1,3],[4,3,3],[4,4,3],[4,6,3],[4,9,3],[4,11,3],[5,2,4],[5,5,4],[5,7,4],[5,8,4],[5,10,4],[5,11,4],[5,1,5],[5,3,5],[5,4,5],[5,6,5],[5,9,5],[5,12,5]]},{"n":5,"grade":5,"seg":180,"part":30,"tempo":"100 min","bolas":[[1,1,0],[1,3,0],[1,4,0],[1,5,0],[1,6,0],[1,7,0],[1,8,0],[1,10,0],[1,11,0],[1,12,0],[2,1,1],[2,2,1],[2,3,1],[2,4,1],[2,7,1],[2,8,1],[2,9,1],[2,10,1],[2,11,1],[2,12,1],[3,2,2],[3,3,2],[3,4,2],[3,5,2],[3,6,2],[3,7,2],[3,8,2],[3,11,2],[3,12,2],[4,2,3],[4,4,3],[4,5,3],[4,6,3],[4,7,3],[4,8,3],[4,9,3],[4,10,3],[4,12,3],[5,2,4],[5,5,4],[5,7,4],[5,8,4],[5,10,4],[5,11,4],[5,1,5],[5,3,5],[5,4,5],[5,6,5],[5,9,5],[5,12,5]]},{"n":6,"grade":5,"seg":150,"part":60,"tempo":"100 min","bolas":[[1,1,0],[1,2,0],[1,3,0],[1,4,0],[1,5,0],[1,6,0],[1,7,0],[1,8,0],[1,9,0],[1,10,0],[1,11,0],[1,12,0],[2,1,1],[2,2,1],[2,3,1],[2,4,1],[2,5,1],[2,6,1],[2,7,1],[2,8,1],[2,9,1],[2,10,1],[2,11,1],[2,12,1],[3,1,2],[3,2,2],[3,3,2],[3,4,2],[3,5,2],[3,6,2],[3,7,2],[3,8,2],[3,9,2],[3,10,2],[3,11,2],[3,12,2],[4,1,3],[4,2,3],[4,3,3],[4,4,3],[4,5,3],[4,6,3],[4,7,3],[4,8,3],[4,9,3],[4,10,3],[4,11,3],[4,12,3],[5,2,4],[5,5,4],[5,7,4],[5,8,4],[5,10,4],[5,11,4],[5,1,5],[5,3,5],[5,4,5],[5,6,5],[5,9,5],[5,12,5]]}];
+const TEMAS = ["Gotejamento de soro", "Regra de três", "Heparina", "Insulina", "Transformação de soluções e porcentagem", "Penicilina Cristalina"];
+const CATEGORIAS = {"1": "Gotejamento de soluções", "2": "Regra de três simples (EV)", "3": "Cálculo de heparina", "4": "Cálculo de insulina", "5": "Transformação de soluções e penicilina"};
+
 const $ = id => document.getElementById(id);
 const cor = i => 'c' + ((i - 1) % 5 + 1);
+const CHAVE = 'acerte-a-dose:banco';
 
+/* ---------- banco: original + edições da professora ---------- */
+let BANCO = JSON.parse(JSON.stringify(BANCO_ORIGINAL));
+
+function carregarEdicoes(){
+  let salvo = null;
+  try { salvo = JSON.parse(localStorage.getItem(CHAVE) || 'null'); } catch(e){}
+  if(!salvo) return;
+  for(const c in salvo){
+    for(const n in salvo[c]){
+      if(BANCO[c] && BANCO[c][n]) BANCO[c][n] = salvo[c][n].slice();
+    }
+  }
+}
+
+function gravarEdicoes(){
+  const dif = {};
+  for(const c in BANCO){
+    for(const n in BANCO[c]){
+      const a = BANCO_ORIGINAL[c][n], b = BANCO[c][n];
+      if(a[0] !== b[0] || a[1] !== b[1]){ (dif[c] = dif[c] || {})[n] = b; }
+    }
+  }
+  try {
+    if(Object.keys(dif).length) localStorage.setItem(CHAVE, JSON.stringify(dif));
+    else localStorage.removeItem(CHAVE);
+  } catch(e){}
+  return dif;
+}
+
+const editada = (c, n) => BANCO_ORIGINAL[c][n][0] !== BANCO[c][n][0]
+                       || BANCO_ORIGINAL[c][n][1] !== BANCO[c][n][1];
+
+function totalEditadas(){
+  let t = 0;
+  for(const c in BANCO) for(const n in BANCO[c]) if(editada(c, n)) t++;
+  return t;
+}
+
+/* ---------- estado do jogo ---------- */
 let cen = null, saiu = new Set(), revelados = new Map();
 let cron = null, resta = 0, correndo = false, atual = 0;
+
+const bolaDe = (c, i) => {
+  const [cat, num, ti] = c.bolas[i];
+  return {cat, num, tema: TEMAS[ti], origem: 'Cat. ' + cat + ' · Q' + num,
+          enunciado: BANCO[cat][num][0], gabarito: BANCO[cat][num][1]};
+};
 
 /* ---------- tela 1 ---------- */
 function pintarCenarios(){
@@ -284,17 +319,21 @@ function pintarCenarios(){
     b.onclick = () => abrirCenario(c.n);
     $('listaCenarios').appendChild(b);
   });
+  const t = totalEditadas();
+  $('selinho').textContent = t ? ' (' + t + ' alterada' + (t > 1 ? 's' : '') + ')' : '';
 }
 
 function abrirCenario(n){
   cen = CENARIOS[n - 1];
   saiu = new Set(); revelados = new Map();
-  $('tituloCen').innerHTML = 'Cenário ' + cen.n +
-    '<small>' + cen.bolas.length + ' questões · cartela ' + cen.grade + '×' + cen.grade +
-    ' · ' + mmss(cen.seg) + ' por questão</small>';
-  $('telaCenarios').classList.add('oculto');
-  $('telaJogo').classList.remove('oculto');
+  $('tituloCen').innerHTML = 'Cenário ' + cen.n + '<small>' + cen.bolas.length +
+    ' questões · cartela ' + cen.grade + '×' + cen.grade + ' · ' + mmss(cen.seg) + ' por questão</small>';
+  mostrar('telaJogo');
   pintarGlobo(); pintarSaidas();
+}
+
+function mostrar(qual){
+  ['telaCenarios', 'telaJogo', 'telaBanco'].forEach(t => $(t).classList.toggle('oculto', t !== qual));
   window.scrollTo(0, 0);
 }
 
@@ -317,43 +356,38 @@ function pintarGlobo(){
 
 function pintarSaidas(){
   const alvo = $('saidas');
-  if(!revelados.size){
-    alvo.innerHTML = '<p class="vazio">Nenhuma bolinha sorteada ainda.</p>';
-    return;
-  }
+  if(!revelados.size){ alvo.innerHTML = '<p class="vazio">Nenhuma bolinha sorteada ainda.</p>'; return; }
+  const cores = ['laranja','verde','vermelho','roxo','azul'];
   const itens = [...revelados.entries()].sort((a, b) => a[0] - b[0]);
   alvo.innerHTML = '<div class="lista">' + itens.map(([n, g]) =>
-    '<span class="tag"><b class="' + cor(n) + '" style="background:var(--' +
-    ['laranja','verde','vermelho','roxo','azul'][(n - 1) % 5] + ')">' + n + '</b>' + g + '</span>'
+    '<span class="tag"><b style="background:var(--' + cores[(n - 1) % 5] + ')">' + n + '</b>' + g + '</span>'
   ).join('') + '</div>';
 }
 
 /* ---------- questão ---------- */
 function abrirQuestao(n){
   atual = n;
-  const [tema, origem, enunciado, gabarito] = cen.bolas[n - 1];
+  const q = bolaDe(cen, n - 1);
   saiu.add(n); pintarGlobo();
 
   $('qBola').className = 'bola ' + cor(n);
   $('qBola').firstElementChild.textContent = n;
-  $('qTema').textContent = tema;
-  $('qOrigem').textContent = origem;
-  $('pergunta').textContent = enunciado;
-  $('qValor').textContent = gabarito;
+  $('qTema').textContent = q.tema;
+  $('qOrigem').textContent = q.origem;
+  $('pergunta').textContent = q.enunciado;
+  $('qValor').textContent = q.gabarito;
   $('qGabarito').classList.remove('on');
   $('btnRevelar').classList.remove('oculto');
   $('btnPausa').classList.remove('oculto');
 
   let jaSaiu = null;
-  revelados.forEach((g, b) => { if(g === gabarito && b !== n && jaSaiu === null) jaSaiu = b; });
+  revelados.forEach((g, b) => { if(g === q.gabarito && b !== n && jaSaiu === null) jaSaiu = b; });
   const av = $('qRepetida');
   if(jaSaiu !== null){
-    av.textContent = 'Atenção: este resultado (' + gabarito + ') já saiu na bolinha ' + jaSaiu +
+    av.textContent = 'Atenção: este resultado (' + q.gabarito + ') já saiu na bolinha ' + jaSaiu +
       '. Os alunos já marcaram esse campo — vale como questão repetida.';
     av.classList.add('on');
-  } else {
-    av.classList.remove('on');
-  }
+  } else av.classList.remove('on');
 
   $('palco').classList.add('on');
   $('btnRevelar').focus();
@@ -366,34 +400,163 @@ function fechar(){ $('palco').classList.remove('on'); parar(); }
 function mmss(s){ return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
 
 function pintarRelogio(){
-  const p = resta / cen.seg;
-  const t = $('qTrilho');
+  const p = resta / cen.seg, t = $('qTrilho');
   t.style.width = (p * 100) + '%';
   t.className = p <= .15 ? 'fim' : (p <= .4 ? 'meio' : '');
   $('qConta').textContent = mmss(resta);
   $('qConta').classList.toggle('zerado', resta === 0);
 }
-
 function tique(){
-  cron = setInterval(() => {
-    resta--; pintarRelogio();
-    if(resta <= 0) parar();
-  }, 1000);
-  correndo = true;
-  $('btnPausa').textContent = 'Pausar';
+  cron = setInterval(() => { resta--; pintarRelogio(); if(resta <= 0) parar(); }, 1000);
+  correndo = true; $('btnPausa').textContent = 'Pausar';
 }
-
 function iniciar(){ parar(); resta = cen.seg; pintarRelogio(); tique(); }
 function parar(){ clearInterval(cron); cron = null; correndo = false; }
 
-/* ---------- ligações ---------- */
+/* ---------- tela do banco ---------- */
+function pintarBanco(){
+  const alvo = $('listaBanco');
+  alvo.innerHTML = '';
+  for(const c of Object.keys(BANCO)){
+    const bloco = document.createElement('div');
+    bloco.className = 'cat';
+    bloco.innerHTML = '<h3>Categoria ' + c + ' — ' + CATEGORIAS[c] + '</h3>';
+    for(let n = 1; n <= 12; n++){
+      const linha = document.createElement('div');
+      linha.className = 'q' + (editada(c, n) ? ' mexida' : '');
+      linha.id = 'q-' + c + '-' + n;
+      linha.innerHTML =
+        '<div class="num">' + n + '</div>' +
+        '<div><span class="rot">Enunciado</span>' +
+        '<textarea data-c="' + c + '" data-n="' + n + '" data-campo="0" aria-label="Enunciado da questão ' + n + ' da categoria ' + c + '"></textarea></div>' +
+        '<div class="campoGab"><span class="rot">Resultado</span>' +
+        '<input data-c="' + c + '" data-n="' + n + '" data-campo="1" aria-label="Resultado da questão ' + n + ' da categoria ' + c + '">' +
+        '<button class="btn claro mini desfazer' + (editada(c, n) ? '' : ' oculto') + '" data-desfaz="' + c + '-' + n + '">Desfazer</button></div>';
+      linha.querySelector('textarea').value = BANCO[c][n][0];
+      linha.querySelector('input').value = BANCO[c][n][1];
+      bloco.appendChild(linha);
+    }
+    alvo.appendChild(bloco);
+  }
+  atualizarResumo();
+}
+
+function atualizarResumo(){
+  const t = totalEditadas();
+  $('resumoBanco').textContent = t
+    ? (t > 1 ? t + ' questões alteradas' : '1 questão alterada') + ' — já valem no sorteio'
+    : '60 questões · edite o texto ou o resultado e o sorteio passa a usar a versão nova';
+  conferirConflitos();
+}
+
+/* avisa se a edição fizer dois números caírem no mesmo resultado dentro de um cenário */
+function conferirConflitos(){
+  const achados = [];
+  CENARIOS.forEach(c => {
+    const porGab = {};
+    c.bolas.forEach((_, i) => {
+      const g = bolaDe(c, i).gabarito.trim();
+      (porGab[g] = porGab[g] || []).push(i + 1);
+    });
+    for(const g in porGab){
+      if(porGab[g].length > 1) achados.push('Cenário ' + c.n + ': bolinhas ' + porGab[g].join(' e ') + ' dão “' + g + '”');
+    }
+  });
+  const box = $('conflitos');
+  if(!achados.length){ box.classList.add('oculto'); return; }
+  box.classList.remove('oculto');
+  box.innerHTML = '<b>Atenção: resultado repetido</b>' +
+    'Num bingo cada resultado precisa ser único, senão os alunos marcam o mesmo campo duas vezes.<br>' +
+    achados.join('<br>');
+}
+
+function mostrarSalvo(){
+  const a = $('avisoSalvo');
+  a.classList.add('on');
+  clearTimeout(mostrarSalvo.t);
+  mostrarSalvo.t = setTimeout(() => a.classList.remove('on'), 1600);
+}
+
+$('listaBanco').addEventListener('change', e => {
+  const el = e.target;
+  if(!el.dataset || el.dataset.c === undefined) return;
+  const {c, n, campo} = el.dataset;
+  const valor = campo === '1' ? el.value.trim() : el.value;
+  if(valor === BANCO[c][n][campo]) return;
+  BANCO[c][n][campo] = valor;
+  gravarEdicoes();
+  const linha = $('q-' + c + '-' + n);
+  linha.classList.toggle('mexida', editada(c, n));
+  linha.querySelector('.desfazer').classList.toggle('oculto', !editada(c, n));
+  atualizarResumo(); mostrarSalvo();
+});
+
+$('listaBanco').addEventListener('click', e => {
+  const alvo = e.target.closest('[data-desfaz]');
+  if(!alvo) return;
+  const [c, n] = alvo.dataset.desfaz.split('-');
+  BANCO[c][n] = BANCO_ORIGINAL[c][n].slice();
+  gravarEdicoes();
+  const linha = $('q-' + c + '-' + n);
+  linha.querySelector('textarea').value = BANCO[c][n][0];
+  linha.querySelector('input').value = BANCO[c][n][1];
+  linha.classList.remove('mexida');
+  alvo.classList.add('oculto');
+  atualizarResumo(); mostrarSalvo();
+});
+
+$('btnRestaurar').onclick = () => {
+  if(!totalEditadas()) { alert('O banco já está igual ao original.'); return; }
+  if(!confirm('Desfazer todas as alterações e voltar ao banco original?')) return;
+  BANCO = JSON.parse(JSON.stringify(BANCO_ORIGINAL));
+  gravarEdicoes(); pintarBanco(); mostrarSalvo();
+};
+
+$('btnExportar').onclick = () => {
+  const blob = new Blob([JSON.stringify(BANCO, null, 1)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'banco-acerte-a-dose.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+
+$('btnImportar').onclick = () => $('arquivo').click();
+$('arquivo').onchange = e => {
+  const f = e.target.files[0];
+  if(!f) return;
+  const leitor = new FileReader();
+  leitor.onload = () => {
+    try {
+      const novo = JSON.parse(leitor.result);
+      let lidas = 0;
+      for(const c in novo) for(const n in novo[c]){
+        if(BANCO[c] && BANCO[c][n] && Array.isArray(novo[c][n]) && novo[c][n].length === 2){
+          BANCO[c][n] = [String(novo[c][n][0]), String(novo[c][n][1])]; lidas++;
+        }
+      }
+      if(!lidas) throw new Error('nenhuma questão reconhecida');
+      gravarEdicoes(); pintarBanco(); mostrarSalvo();
+      alert(lidas + ' questões carregadas.');
+    } catch(err){
+      alert('Não deu para ler esse arquivo. Use uma cópia baixada por este mesmo aplicativo.');
+    }
+    e.target.value = '';
+  };
+  leitor.readAsText(f);
+};
+
+$('irBanco').onclick = () => { pintarBanco(); mostrar('telaBanco'); };
+$('btnSairBanco').onclick = () => { pintarCenarios(); mostrar('telaCenarios'); };
+
+/* ---------- ligações do jogo ---------- */
 $('btnPausa').onclick = () => {
   if(correndo){ parar(); $('btnPausa').textContent = 'Continuar'; }
   else if(resta > 0) tique();
 };
 
 $('btnRevelar').onclick = e => {
-  const g = cen.bolas[atual - 1][3];
+  const g = bolaDe(cen, atual - 1).gabarito;
   $('qGabarito').classList.add('on');
   e.currentTarget.classList.add('oculto');
   $('btnPausa').classList.add('oculto');
@@ -428,9 +591,7 @@ $('btnZerar').onclick = () => {
 
 $('btnVoltar').onclick = () => {
   if(saiu.size && !confirm('Trocar de cenário? O sorteio atual será perdido.')) return;
-  $('telaJogo').classList.add('oculto');
-  $('telaCenarios').classList.remove('oculto');
-  window.scrollTo(0, 0);
+  pintarCenarios(); mostrar('telaCenarios');
 };
 
 document.addEventListener('keydown', e => {
@@ -440,6 +601,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
+carregarEdicoes();
 pintarCenarios();
 </script>
 
