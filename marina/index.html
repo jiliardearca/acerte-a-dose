@@ -1,0 +1,545 @@
+<title>Caso Marina</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#FAF8F5; --fg:#1C2229; --mut:#5E6975; --card:#FFFFFF; --line:#E3DED6;
+  --teal:#0F5C63; --teal-l:#1A7F88; --amber:#B45309; --amber-bg:#FEF6E7;
+  --red:#9F1239; --red-bg:#FDF2F5; --green:#1B5E3F; --green-bg:#EFF6F1;
+  --chip:#F1EDE6;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12161A; --fg:#E9EDF1; --mut:#98A3AE; --card:#1A2026; --line:#2A333B;
+  --teal:#5FD3DD; --teal-l:#7EE0E8; --amber:#F0B858; --amber-bg:#2A2214;
+  --red:#F0879F; --red-bg:#2A161C; --green:#6FD9A2; --green-bg:#12251B;
+  --chip:#232B33;}}
+:root[data-theme="dark"]{
+  --bg:#12161A; --fg:#E9EDF1; --mut:#98A3AE; --card:#1A2026; --line:#2A333B;
+  --teal:#5FD3DD; --teal-l:#7EE0E8; --amber:#F0B858; --amber-bg:#2A2214;
+  --red:#F0879F; --red-bg:#2A161C; --green:#6FD9A2; --green-bg:#12251B;
+  --chip:#232B33;}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
+  line-height:1.65;padding:36px 20px 80px;font-size:16px}
+.wrap{max-width:900px;margin:0 auto}
+
+header{border-bottom:3px solid var(--teal);padding-bottom:24px;margin-bottom:8px}
+.eyebrow{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);font-weight:700}
+h1{font-family:Fraunces,Georgia,serif;font-weight:700;
+  font-size:clamp(2rem,5.5vw,3rem);margin:.2em 0 .1em;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--mut);max-width:60ch}
+
+h2{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.62rem;
+  margin:56px 0 4px;padding-top:22px;border-top:1px solid var(--line);text-wrap:balance}
+h2:first-of-type{border-top:none}
+h3{font-size:1.06rem;font-weight:700;margin:30px 0 8px;color:var(--teal)}
+h4{font-size:.94rem;font-weight:700;margin:20px 0 6px}
+p{margin:0 0 14px}
+.lead{color:var(--mut);margin-bottom:22px;max-width:66ch}
+
+.fase{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:22px 24px;margin:20px 0}
+.fase-num{display:inline-block;background:var(--teal);color:#fff;font-weight:700;
+  font-size:.72rem;letter-spacing:.1em;padding:3px 10px;border-radius:20px;
+  text-transform:uppercase;margin-bottom:10px}
+:root[data-theme="dark"] .fase-num,
+:root:not([data-theme="light"]) .fase-num{color:#0B1215}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .fase-num{color:#fff}}
+
+.fala{border-left:3px solid var(--line);padding:2px 0 2px 16px;margin:12px 0;color:var(--fg)}
+.fala b{color:var(--teal)}
+.narr{background:var(--chip);border-radius:10px;padding:12px 16px;margin:12px 0;
+  font-style:italic;color:var(--mut);font-size:.95rem}
+.narr::before{content:"NARRADOR  ";font-style:normal;font-weight:700;
+  font-size:.68rem;letter-spacing:.14em;color:var(--teal)}
+
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+th{text-align:left;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{font-family:'JetBrains Mono',monospace;white-space:nowrap;font-size:.86rem}
+tr:last-child td{border-bottom:none}
+
+.pos{color:var(--green);font-weight:600}
+.neg{color:var(--red);font-weight:600}
+.zero{color:var(--mut)}
+
+.badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;padding:2px 8px;border-radius:5px;white-space:nowrap}
+.b-ok{background:var(--green-bg);color:var(--green)}
+.b-warn{background:var(--amber-bg);color:var(--amber)}
+.b-bad{background:var(--red-bg);color:var(--red)}
+
+.box{border-radius:12px;padding:16px 20px;margin:18px 0;border-left:4px solid}
+.box.info{background:var(--chip);border-color:var(--teal)}
+.box.alert{background:var(--amber-bg);border-color:var(--amber)}
+.box.crit{background:var(--red-bg);border-color:var(--red)}
+.box p:last-child{margin-bottom:0}
+.box .t{font-weight:700;margin-bottom:6px}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:16px 0}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.mini h4{margin-top:0}
+.mini p{font-size:.92rem;margin-bottom:0;color:var(--mut)}
+
+code{background:var(--chip);padding:2px 6px;border-radius:4px;
+  font-family:'JetBrains Mono',monospace;font-size:.86em}
+.var{font-family:'JetBrains Mono',monospace;font-size:.86em;font-weight:600;color:var(--teal)}
+
+ul{padding-left:20px;margin:0 0 14px}
+li{margin-bottom:6px}
+.pergunta{background:var(--amber-bg);border-radius:10px;padding:14px 18px;margin:14px 0;
+  border:1px dashed var(--amber);font-size:.94rem}
+.pergunta b{color:var(--amber)}
+footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--line);
+  color:var(--mut);font-size:.88rem}
+.fonte{font-size:.84rem;color:var(--mut)}
+.fonte a{color:var(--teal)}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Consulta clínica ramificada · Caso 1</div>
+  <h1>Marina, 27 anos</h1>
+  <p class="sub">Roteiro completo com todas as ramificações, o efeito numérico de cada
+  escolha e a regra exata de cada desfecho. Construído sobre o roteiro da Lara —
+  o que entra aqui é a camada que faltava: os números e as condições.</p>
+</header>
+
+<div class="box info">
+  <div class="t">O que mudou em relação ao seu documento</div>
+  <p>O seu roteiro já tinha as cenas, as falas e as escolhas. O que faltava, e que está
+  aqui: <b>quanto</b> cada escolha soma ou tira, <b>o que ela destrava ou tranca</b>,
+  <b>qual narração entra</b> e <b>para onde a cena vai</b>. Sem isso não dá para programar
+  nem para pontuar — dois alunos fariam caminhos diferentes e tirariam a mesma nota.</p>
+</div>
+
+<h2>As seis variáveis</h2>
+<p class="lead">Tudo no jogo mexe nestes seis números. Eles ficam escondidos do aluno
+durante a partida e só aparecem no debriefing.</p>
+
+<div class="scroll"><table>
+<tr><th>Variável</th><th>Vai de</th><th>Para que serve</th></tr>
+<tr><td><span class="var">vinculo</span></td><td class="n">0 – 20</td>
+    <td>Quanto Marina fala espontaneamente. Destrava falas sensíveis.</td></tr>
+<tr><td><span class="var">privacidade</span></td><td class="n">sim / não</td>
+    <td>Se houve entrevista a sós, e em que momento. Destrava o bloco íntimo.</td></tr>
+<tr><td><span class="var">investigacao</span></td><td class="n">0 – 25</td>
+    <td>Quantos tópicos do prontuário foram abertos.</td></tr>
+<tr><td><span class="var">exame</span></td><td class="n">0 – 15</td>
+    <td>Exame físico e estado mental. Penaliza avaliação irrelevante.</td></tr>
+<tr><td><span class="var">risco</span></td><td class="n">0 – 30</td>
+    <td>Pista crítica reconhecida + profundidade da avaliação do risco.</td></tr>
+<tr><td><span class="var">seguranca</span></td><td class="n">0 – 10</td>
+    <td>A decisão final. É ela que define o desfecho.</td></tr>
+</table></div>
+
+<div class="box info">
+  <div class="t">Total possível: 100 pontos</div>
+  <p>Vínculo e comunicação <b>20</b> · Investigação <b>25</b> · Exame e estado mental <b>15</b> ·
+  Reconhecimento do risco <b>30</b> · Decisão final <b>10</b>.</p>
+  <p>Como você pediu, o aluno vê na tela inicial que vale 100 e que escolhas ruins
+  descontam — mas não vê o placar correndo durante a consulta.</p>
+</div>
+
+<h2>Fase 1 · A chegada</h2>
+
+<div class="fase">
+  <div class="fase-num">Cena 1 · recepção</div>
+  <div class="narr">A sala está silenciosa. Marina entra devagar, senta com os ombros
+  curvados e evita olhar para você. Helena senta ao lado, apertando a bolsa com as duas mãos.</div>
+  <div class="fala"><b>Helena:</b> “Ela não está bem. Faz semanas que quase não sai do quarto.
+  Está faltando ao trabalho, mal come e passa a noite acordada.”</div>
+  <div class="narr">Marina abaixa a cabeça. Incomodada, mas não contradiz a mãe.</div>
+  <div class="fala"><b>Marina:</b> “Mãe… eu consigo falar.”</div>
+
+  <h4>Como você começa a consulta?</h4>
+  <div class="scroll"><table>
+  <tr><th>Escolha</th><th>Efeito</th><th>Destrava / tranca</th><th>Narração que entra</th></tr>
+  <tr>
+    <td><b>A.</b> “Helena, percebo sua preocupação. Quero ouvir primeiro como a Marina está
+        se sentindo e depois converso com a senhora.”</td>
+    <td class="n"><span class="pos">vinculo +5</span></td>
+    <td>Helena colabora o resto da consulta. <span class="badge b-ok">ideal</span></td>
+    <td>“Helena assente devagar. Marina levanta o olhar pela primeira vez.”</td>
+  </tr>
+  <tr>
+    <td><b>B.</b> “Pode continuar, Helena. Depois a Marina complementa.”</td>
+    <td class="n"><span class="neg">vinculo −2</span></td>
+    <td>Tranca <i>Relacionamento</i> e <i>Culpa</i> na fase 3.</td>
+    <td>“Marina volta a olhar para as próprias mãos e não diz mais nada.”</td>
+  </tr>
+  <tr>
+    <td><b>C.</b> “Helena, saia da sala agora. Preciso atender sua filha sozinho.”</td>
+    <td class="n"><span class="neg">vinculo −3</span><br><span class="pos">privacidade = sim</span></td>
+    <td>Privacidade cedo, mas Helena não volta como apoio na fase 8.</td>
+    <td>“Helena se levanta sem responder e fecha a porta com força. Marina se encolhe na cadeira.”</td>
+  </tr>
+  <tr>
+    <td><b>D.</b> Ignorar Helena e repetir a pergunta só para Marina.</td>
+    <td class="n"><span class="neg">vinculo −4</span></td>
+    <td>Helena interrompe <b>4×</b> em vez de 2 na fase 2.</td>
+    <td>“Helena continua falando por cima. Marina desiste de completar a frase.”</td>
+  </tr>
+  </table></div>
+</div>
+
+<h2>Fase 2 · Escuta terapêutica</h2>
+
+<div class="fase">
+  <div class="fase-num">Cena 2 · conduzir a comunicação</div>
+  <div class="fala"><b>Marina:</b> “Eu só estou muito cansada… acho que é isso.” <i>(fala devagar)</i></div>
+  <div class="fala"><b>Helena:</b> “Ela não era assim antes.” · “Tem dia que nem toma banho.”</div>
+
+  <div class="scroll"><table>
+  <tr><th>Escolha</th><th>Efeito</th><th>Consequência</th></tr>
+  <tr><td><b>1.</b> “Helena, suas informações são importantes. Peço só que deixe a Marina
+      terminar cada resposta, e depois eu ouço a senhora.”</td>
+      <td class="n"><span class="pos">vinculo +5</span></td>
+      <td>Helena respeita o turno. Marina completa as frases. <span class="badge b-ok">ideal</span></td></tr>
+  <tr><td><b>2.</b> Deixar as duas responderem juntas.</td>
+      <td class="n"><span class="neg">vinculo −2</span></td>
+      <td>Duas falas de Marina se perdem: <i>Prazer</i> e <i>Concentração</i> saem do painel.</td></tr>
+  <tr><td><b>3.</b> Mandar Helena sair, sem explicar a Marina.</td>
+      <td class="n"><span class="neg">vinculo −3</span><br><span class="pos">privacidade = sim</span></td>
+      <td>Privacidade sem consentimento — a paciente não foi consultada sobre a própria consulta.</td></tr>
+  </table></div>
+
+  <div class="box alert">
+    <div class="t">Regra que vale a partir daqui</div>
+    <p>A narrativa <b>nunca trava</b> nesta fase. O que muda é quanto Marina entrega
+    espontaneamente daqui para a frente. É a diferença entre um aluno que precisa
+    caçar cada informação e um que a recebe.</p>
+  </div>
+</div>
+
+<h2>Fase 3 · Painel de investigação</h2>
+<p class="lead">Prontuário com tópicos clicáveis. Não há ordem certa — há
+cobertura. Cada tópico aberto vale <b>1 ponto</b> de <span class="var">investigacao</span>,
+até o teto de 25.</p>
+
+<div class="scroll"><table>
+<tr><th>Tópico</th><th>Fala de Marina</th><th>Condição</th><th>Peso</th></tr>
+<tr><td>Humor</td><td>“Eu me sinto triste praticamente todos os dias.”</td><td>livre</td><td class="n">2</td></tr>
+<tr><td>Prazer</td><td>“Eu gostava de desenhar. Faz meses que nem pego no lápis.”</td><td>livre</td><td class="n">2</td></tr>
+<tr><td>Sono</td><td>“Demoro para dormir e acordo por volta das três da manhã.”</td><td>livre</td><td class="n">2</td></tr>
+<tr><td>Apetite</td><td>“Tem dia que percebo que quase não comi nada.”</td><td>livre</td><td class="n">1</td></tr>
+<tr><td>Peso</td><td>Perda de cerca de 5 kg em dois meses.</td><td>livre</td><td class="n">1</td></tr>
+<tr><td>Fadiga</td><td>“Mesmo dormindo algumas horas eu acordo exausta.”</td><td>livre</td><td class="n">1</td></tr>
+<tr><td>Início dos sintomas</td><td>“Uns dois meses… mas piorou nas últimas semanas.”</td><td>livre</td><td class="n">2</td></tr>
+<tr><td>Trabalho</td><td>“Faltei quatro dias porque não consegui sair da cama.”</td><td>livre</td><td class="n">2</td></tr>
+<tr><td>Concentração</td><td>“Leio um e-mail três vezes e não consigo lembrar.”</td><td class="n">vinculo ≥ 5</td><td class="n">1</td></tr>
+<tr><td>Autocuidado</td><td>“Minha mãe insiste para eu tomar banho ou comer.”</td><td>livre</td><td class="n">1</td></tr>
+<tr><td>Vida social</td><td>“Parei de responder minhas amigas.”</td><td>livre</td><td class="n">1</td></tr>
+<tr><td>Culpa</td><td>“Parece que estou decepcionando minha família o tempo todo.”</td><td class="n">vinculo ≥ 8</td><td class="n">2</td></tr>
+<tr><td>Relacionamento</td><td>“Terminei um namoro de quatro anos.”</td><td class="n">vinculo ≥ 8</td><td class="n">2</td></tr>
+<tr><td>Financeiro</td><td>“Estou com medo de perder o emprego.”</td><td>livre</td><td class="n">1</td></tr>
+<tr><td><b>Álcool</b></td><td>“Comecei a beber vinho quase toda noite porque parece que
+    minha cabeça desliga por algumas horas.”</td>
+    <td class="n">privacidade = sim</td><td class="n">3</td></tr>
+<tr><td>Histórico psiquiátrico</td><td>Nunca fez tratamento.</td><td>livre</td><td class="n">1</td></tr>
+<tr><td>Histórico familiar</td><td>Uma tia tratou depressão.</td><td>livre</td><td class="n">1</td></tr>
+<tr><td>Medicamentos</td><td>Não usa medicamento contínuo.</td><td>livre</td><td class="n">1</td></tr>
+<tr><td>Doenças clínicas</td><td>Nega doenças conhecidas.</td><td>livre</td><td class="n">1</td></tr>
+<tr><td><b>Irmã</b></td><td>“Minha irmã é quem mais consegue me fazer conversar.”</td>
+    <td class="n">vinculo ≥ 8</td><td class="n">3</td></tr>
+<tr><td>Família</td><td>“Minha mãe tenta ajudar, mas às vezes sinto que não entende.”</td>
+    <td class="n">privacidade = sim</td><td class="n">2</td></tr>
+</table></div>
+
+<div class="box alert">
+  <div class="t">Dois tópicos carregam o caso</div>
+  <p><b>Álcool</b> e <b>Irmã</b> valem 3 cada e ambos exigem privacidade ou vínculo alto.
+  O álcool é fator de risco; a irmã é o principal fator protetor e reaparece na fase 7 e no
+  desfecho. Um aluno que nunca conseguiu ficar a sós com Marina chega ao final sem os dois.</p>
+</div>
+
+<h2>Fase 4 · A entrevista a sós</h2>
+
+<div class="fase">
+  <div class="fase-num">Cena 4 · pedir o espaço</div>
+  <div class="narr">Você percebe que as respostas de Marina ficam mais curtas sempre que
+  Helena está olhando.</div>
+  <div class="scroll"><table>
+  <tr><th>Escolha</th><th>Efeito</th><th>O que acontece</th></tr>
+  <tr><td><b>A.</b> Pedir o consentimento de Marina: “Gostaria de conversar alguns minutos
+      só com você. Depois chamamos sua mãe de novo, se você concordar.”</td>
+      <td class="n"><span class="pos">vinculo +5</span><br><span class="pos">privacidade = sim</span></td>
+      <td>“Pode ser… eu queria falar algumas coisas sozinha.” Abre o bloco íntimo.
+      <span class="badge b-ok">ideal</span></td></tr>
+  <tr><td><b>B.</b> Mandar Helena sair sem explicar.</td>
+      <td class="n"><span class="neg">vinculo −2</span><br><span class="pos">privacidade = sim</span></td>
+      <td>Consegue o espaço, mas passou por cima da paciente. Helena volta ressentida na fase 8.</td></tr>
+  <tr><td><b>C.</b> Manter a mãe o tempo todo.</td>
+      <td class="n"><span class="zero">sem alteração</span></td>
+      <td>Álcool e Família ficam trancados. A pista crítica da fase 6 chega
+      <b>mais fraca</b> (ver abaixo).</td></tr>
+  </table></div>
+</div>
+
+<h2>Fase 5 · Exame físico e estado mental</h2>
+<p class="lead">Corpo clicável. Você pediu que eu pesquisasse o que é de fato relevante —
+segue a classificação, com a razão clínica de cada item. Vale <b>15 pontos</b>.</p>
+
+<h3>Prioritário — pontua</h3>
+<div class="scroll"><table>
+<tr><th>Região / avaliação</th><th>Achado no caso</th><th>Por que importa aqui</th><th>Pts</th></tr>
+<tr><td><b>Estado mental (EEM)</b></td>
+    <td>Consciente, orientada. Aparência descuidada. Psicomotricidade lentificada.
+        Contato visual reduzido. Fala baixa e coerente. Humor deprimido, afeto restrito.
+        Pensamento organizado, conteúdo pessimista, desesperança.</td>
+    <td>É o exame central da consulta. A desesperança é fator de risco independente.</td><td class="n">5</td></tr>
+<tr><td><b>Antebraços e punhos</b><br>(inspeção)</td>
+    <td>Sem cicatrizes ou lesões recentes.</td>
+    <td>Rastreio de autolesão. Em ideação suicida é inspeção obrigatória — e o achado
+        negativo também é informação.</td><td class="n">3</td></tr>
+<tr><td>Sinais vitais</td>
+    <td>PA 116×74 · FC 88 · FR 18 · SpO₂ 98% · T 36,5 °C</td>
+    <td>Base clínica e triagem de causa orgânica.</td><td class="n">2</td></tr>
+<tr><td>Estado nutricional e hidratação</td>
+    <td>Perda de 5 kg em 2 meses. Mucosas discretamente secas.</td>
+    <td>Mede a repercussão física do quadro.</td><td class="n">2</td></tr>
+<tr><td>Pescoço / tireoide</td>
+    <td>Tireoide não palpável, sem nódulos.</td>
+    <td>Hipotireoidismo cursa com fadiga, lentificação e humor deprimido — é o principal
+        diferencial orgânico da depressão.</td><td class="n">2</td></tr>
+<tr><td>Neurológico sumário</td>
+    <td>Sem déficits focais.</td>
+    <td>Afasta causa neurológica aguda.</td><td class="n">1</td></tr>
+</table></div>
+
+<h3>Não prioritário nesta consulta — desconta</h3>
+<div class="scroll"><table>
+<tr><th>Avaliação</th><th>Resposta na tela</th><th>Pts</th></tr>
+<tr><td>Pés e pulsos periféricos</td><td>Sem alterações.</td><td class="n"><span class="neg">−1</span></td></tr>
+<tr><td>Otoscopia</td><td>Membranas timpânicas íntegras.</td><td class="n"><span class="neg">−1</span></td></tr>
+<tr><td>Acuidade visual</td><td>Sem queixas visuais.</td><td class="n"><span class="neg">−1</span></td></tr>
+<tr><td>Ausculta abdominal detalhada</td><td>Ruídos hidroaéreos presentes.</td><td class="n"><span class="neg">−1</span></td></tr>
+<tr><td>Linfonodos inguinais</td><td>Não palpáveis.</td><td class="n"><span class="neg">−1</span></td></tr>
+<tr><td>Exame de coluna</td><td>Sem alterações posturais relevantes.</td><td class="n"><span class="neg">−1</span></td></tr>
+</table></div>
+
+<div class="box alert">
+  <div class="t">Uma sugestão sobre a penalidade</div>
+  <p>Eu limitaria o desconto total do exame físico a <b>−3</b>, mesmo que o aluno clique em
+  tudo. O objetivo é ensinar <i>priorização</i>, não punir quem examina demais — na clínica
+  real, examinar a mais é falha menor do que deixar de examinar o que importa. O debriefing
+  explica: “estes achados não contribuíram para a condução deste caso”.</p>
+</div>
+
+<h2>Fase 6 · A pista crítica</h2>
+
+<div class="fase">
+  <div class="fase-num">Cena 6 · a frase que muda tudo</div>
+  <div class="narr">Depois de alguns segundos de silêncio, Marina junta as mãos, uma sobre
+  a outra. Fala quase sussurrando.</div>
+  <div class="fala"><b>Marina:</b> “Às vezes eu acho que seria mais fácil dormir e não
+  precisar acordar no dia seguinte.”</div>
+
+  <div class="box alert">
+    <div class="t">Como a frase chega</div>
+    <p>Se <span class="var">vinculo ≥ 10</span> <b>ou</b> <span class="var">privacidade = sim</span>,
+    Marina diz a frase inteira, como acima.<br>
+    Caso contrário ela diz só <i>“Ando muito cansada de tudo…”</i> e a pista fica
+    <b>mais difícil de reconhecer</b> — as alternativas continuam as mesmas, mas o aluno
+    tem menos sinal. Isso é o custo real de não ter construído vínculo.</p>
+  </div>
+
+  <div class="scroll"><table>
+  <tr><th>Escolha</th><th>Efeito</th><th>Resposta de Marina</th></tr>
+  <tr><td><b>B.</b> “Quando você fala que não gostaria de acordar, está pensando em morrer
+      ou em tirar a própria vida?”</td>
+      <td class="n"><span class="pos">risco +10</span><br>abre a Fase 7</td>
+      <td>Silêncio. Ela olha para você pela primeira vez direto.
+      “…é. Às vezes eu penso nisso.” <span class="badge b-ok">única que abre a avaliação</span></td></tr>
+  <tr><td><b>A.</b> “Você está muito triste. Isso vai passar.”</td>
+      <td class="n"><span class="neg">vinculo −4</span></td>
+      <td>“É… deve passar.” Ela não toca mais no assunto espontaneamente.</td></tr>
+  <tr><td><b>C.</b> “Não diga isso. Sua mãe sofreria muito.”</td>
+      <td class="n"><span class="neg">vinculo −5</span></td>
+      <td>Ela desvia o olhar. “Desculpa.” Culpabilização — fecha a porta.</td></tr>
+  <tr><td><b>D.</b> “Você acha que está só cansada por causa do trabalho?”</td>
+      <td class="n"><span class="neg">vinculo −3</span></td>
+      <td>“Pode ser.” A pista é enterrada pela própria pergunta.</td></tr>
+  </table></div>
+
+  <div class="box crit">
+    <div class="t">Segunda chance — só uma</div>
+    <p>Se o aluno escolher A, C ou D, a consulta segue. Marina dá <b>uma última deixa</b>,
+    mais fraca, três interações depois:</p>
+    <p class="fala"><b>Marina:</b> “Sabe quando a gente cansa de tentar?”</p>
+    <p>Se ele perguntar diretamente aí, ganha <span class="var">risco +6</span> em vez de 10
+    e abre a fase 7. Se deixar passar de novo, o caminho fecha e o caso segue para o
+    <b>Desfecho 2</b> ou <b>4</b>.</p>
+  </div>
+</div>
+
+<h2>Fase 7 · Avaliação do risco</h2>
+<p class="lead">Cartões de investigação. Cada um aberto soma. Vale <b>20 pontos</b>
+somados aos 10 do reconhecimento — total de 30 no bloco de risco.</p>
+
+<div class="scroll"><table>
+<tr><th>Cartão</th><th>Resposta</th><th>Peso</th><th>Papel clínico</th></tr>
+<tr><td><b>Ideação — ativa ou passiva</b></td>
+    <td>“Não é só não querer acordar. Às vezes eu penso em fazer alguma coisa.”</td>
+    <td class="n">4</td><td>Separa desejo de morrer de intenção de agir.</td></tr>
+<tr><td><b>Planejamento</b></td><td>“Já pensei em uma forma de fazer isso.”</td>
+    <td class="n">4</td><td>Eleva o risco de forma decisiva.</td></tr>
+<tr><td><b>Acesso a meios</b></td><td>“Tenho acesso, em casa, a coisas que poderiam me machucar.”</td>
+    <td class="n">4</td><td>Define a conduta imediata: restringir acesso.</td></tr>
+<tr><td>Frequência</td><td>“Penso nisso várias vezes por semana.”</td><td class="n">2</td><td></td></tr>
+<tr><td>Recência</td><td>“Ontem pensei nisso durante horas.”</td><td class="n">2</td><td>Ideação recente pesa mais que remota.</td></tr>
+<tr><td>Tentativa anterior</td><td>“Não, nunca tentei.”</td><td class="n">2</td><td>Negativo aqui, mas é a pergunta de maior peso preditivo.</td></tr>
+<tr><td>Desesperança</td><td>“Eu não consigo imaginar minha vida melhorando.”</td>
+    <td class="n">1</td><td>Fator de risco independente.</td></tr>
+<tr><td><b>Fatores protetores</b></td><td>“Minha irmã é a única pessoa que me faz querer continuar.”</td>
+    <td class="n">1</td><td>Sustenta o plano de segurança.</td></tr>
+</table></div>
+
+<div class="box crit">
+  <div class="t">Os três que decidem o desfecho</div>
+  <p><b>Ideação ativa</b>, <b>Planejamento</b> e <b>Acesso a meios</b>. Quem não abre
+  os três não tem como saber a gravidade — e cai no Desfecho 3 mesmo tendo
+  perguntado sobre suicídio. É exatamente a lição que você quis: identificar
+  ideação não basta.</p>
+</div>
+
+<h2>Fase 8 · A mãe volta</h2>
+
+<div class="fase">
+  <div class="fase-num">Cena 8 · reintegração</div>
+  <div class="fala"><b>Enfermeiro:</b> “Marina, sua mãe está muito preocupada. Você gostaria
+  que ela participasse para construirmos juntos os próximos passos?”</div>
+  <div class="scroll"><table>
+  <tr><th>Situação</th><th>Condição</th><th>O que acontece</th></tr>
+  <tr><td>Marina concorda e Helena vira rede de apoio</td><td class="n">vinculo ≥ 10</td>
+      <td>Helena entra chorando. “Eu não sabia que estava tão ruim assim.”
+      <span class="pos">seguranca +2</span> no desfecho.</td></tr>
+  <tr><td>Marina prefere conversar depois</td><td class="n">vinculo 5 – 9</td>
+      <td>O plano é construído só com ela. Segue sem bônus.</td></tr>
+  <tr><td>Helena não volta</td><td class="n">escolha C na fase 1 ou vinculo &lt; 5</td>
+      <td>“Ela ficou brava e foi embora.” A rede de apoio familiar fica reduzida à irmã.</td></tr>
+  </table></div>
+</div>
+
+<h2>Fase 9 · Decisão final</h2>
+<p class="lead">A tela mostra o resumo do que <b>o aluno</b> coletou — não o caso completo.
+Quem investigou pouco decide com pouco, que é o ponto.</p>
+
+<div class="scroll"><table>
+<tr><th>Escolha</th><th>Pts</th><th>Leva a</th></tr>
+<tr><td><b>C.</b> Priorizar a segurança imediata, manter Marina acompanhada, acionar o fluxo
+    correspondente ao risco, restringir acesso a meios letais e envolver a rede de apoio.</td>
+    <td class="n"><span class="pos">+10</span></td><td>Desfecho 1 <span class="badge b-ok">seguro</span></td></tr>
+<tr><td><b>B.</b> Encaminhar para psicologia e liberar Marina após a consulta.</td>
+    <td class="n"><span class="neg">+2</span></td><td>Desfecho 3</td></tr>
+<tr><td><b>A.</b> Orientar sono e alimentação, retorno em uma semana.</td>
+    <td class="n"><span class="neg">0</span></td><td>Desfecho 3 ou 4</td></tr>
+<tr><td><b>D.</b> Pedir que Marina prometa que não fará nada e mandá-la para casa com a mãe.</td>
+    <td class="n"><span class="neg">0</span></td><td>Desfecho 4</td></tr>
+</table></div>
+
+<div class="box alert">
+  <div class="t">Sobre a alternativa D</div>
+  <p>Vale um parágrafo próprio no debriefing. O “contrato de não suicídio” é prática
+  antiga e hoje desaconselhada: não protege a paciente e transfere a ela a responsabilidade
+  pela própria segurança. Muitos alunos vão escolher essa por parecer humana.</p>
+</div>
+
+<h2>A regra dos desfechos</h2>
+<p class="lead">Esta é a tabela que faltava no seu documento. Lida de cima para baixo:
+vale a primeira linha que casar.</p>
+
+<div class="scroll"><table>
+<tr><th>#</th><th>Condição exata</th><th>Desfecho</th></tr>
+<tr><td class="n">1</td>
+    <td><span class="var">risco ≥ 10</span> <b>e</b> os 3 cartões críticos abertos
+        <b>e</b> escolha final = C</td>
+    <td><b>Cuidado seguro</b> <span class="badge b-ok">melhor</span></td></tr>
+<tr><td class="n">2</td>
+    <td>Pista da fase 6 <b>perdida</b> nas duas chances, mas
+        <span class="var">investigacao ≥ 12</span></td>
+    <td><b>Reavaliação</b> — o sistema oferece uma revisão do atendimento
+        <span class="badge b-warn">recuperável</span></td></tr>
+<tr><td class="n">3</td>
+    <td>Perguntou sobre suicídio, mas <b>menos de 2</b> dos 3 cartões críticos,
+        <b>ou</b> escolha final A/B</td>
+    <td><b>Risco subestimado</b> <span class="badge b-bad">grave</span></td></tr>
+<tr><td class="n">4</td>
+    <td>Nunca perguntou diretamente <b>e</b> <span class="var">investigacao &lt; 12</span>,
+        <b>ou</b> escolha final = D</td>
+    <td><b>Risco não identificado</b> <span class="badge b-bad">game over</span></td></tr>
+</table></div>
+
+<h3>Desfecho 1 · Cuidado seguro</h3>
+<div class="narr">Marina permanece na unidade enquanto a equipe organiza o cuidado.
+Helena e a irmã são incluídas conforme a vontade dela. Antes de sair da sala,
+Marina olha para você e diz baixinho: “obrigada por perguntar”.</div>
+<p><b>Mensagem:</b> “Você reconheceu que escutar, investigar e proteger são etapas
+inseparáveis do cuidado em saúde mental.”</p>
+
+<h3>Desfecho 2 · Reavaliação</h3>
+<div class="narr">Você está prestes a encerrar quando algo não fecha.</div>
+<p>Tela: <i>“Revendo seu atendimento, há uma informação importante que ainda não foi
+explorada. Deseja reavaliar?”</i> — se aceitar, volta à fase 6 e ainda pode chegar ao
+Desfecho 1, com teto de <b>85 pontos</b>.</p>
+<p><b>Mensagem:</b> “Reconhecer uma lacuna e reavaliar também faz parte do raciocínio
+profissional.”</p>
+
+<h3>Desfecho 3 · Risco subestimado</h3>
+<div class="narr">Marina agradece e vai embora aparentemente calma. Helena
+agradece na porta. Você segue para o próximo atendimento.</div>
+<div class="narr">Três horas depois, o telefone da unidade toca.</div>
+<p>Debriefing: identificar a ideação não encerra a avaliação. Sem intenção,
+planejamento e acesso a meios, não há como definir a conduta.</p>
+
+<h3>Desfecho 4 · Risco não identificado</h3>
+<div class="narr">Marina sai da UBS. A tela escurece.</div>
+<div class="narr">Manhã seguinte. Helena liga para a unidade.</div>
+<p><b>GAME OVER — o risco não foi identificado.</b> Ao longo da consulta, Marina
+apresentou múltiplas pistas. O cenário existe para mostrar como oportunidades de escuta,
+investigação e avaliação mudam completamente o cuidado oferecido.</p>
+
+<div class="box crit">
+  <div class="t">Recomendação sobre este desfecho</div>
+  <p>Um jogo educativo que termina em suicídio precisa de cuidado no fechamento.
+  Eu colocaria, na mesma tela: o <b>CVV 188</b> (ligação gratuita, 24 horas), uma frase
+  dizendo que o cenário é ficcional e uma orientação para quem se sentir mobilizado
+  procurar apoio. Alunos de enfermagem também têm história pessoal.</p>
+</div>
+
+<h2>O que ainda depende de você</h2>
+<div class="grid2">
+  <div class="mini"><h4>Os pesos</h4>
+    <p>Distribuí os 100 pontos privilegiando risco (30) e investigação (25). Se para você
+    a comunicação vale mais, é só dizer que eu redistribuo.</p></div>
+  <div class="mini"><h4>A segunda chance da fase 6</h4>
+    <p>Propus uma só, com pontuação menor. Pode ser nenhuma, se você quiser o caso mais duro.</p></div>
+  <div class="mini"><h4>O tempo</h4>
+    <p>Você disse que pode ter. Sugiro cronômetro visível só a partir da fase 7, e sem
+    penalidade — apenas registro no debriefing.</p></div>
+  <div class="mini"><h4>Os quadrinhos</h4>
+    <p>Você quer as falas em quadrinhos curtos. Preciso saber se serão ilustrações
+    desenhadas ou balões sobre fundo de cor.</p></div>
+</div>
+
+<div class="pergunta">
+  <b>Antes do Caso 2 (crise de ansiedade):</b> naquele caso o exame físico muda de função —
+  em vez de avaliar repercussão, ele serve para <b>descartar causa orgânica</b>
+  (infarto, arritmia, hipoglicemia, hipertireoidismo, embolia). Ou seja, lá o aluno
+  <i>precisa</i> auscultar coração e pulmão, e não olhar isso vira erro grave. É a
+  inversão exata da lógica deste caso, e dá um contraste ótimo entre os dois.
+  Confirma se posso montar assim?
+</div>
+
+<footer>
+<p class="fonte"><b>Fontes clínicas:</b>
+<a href="https://www.ufrgs.br/telessauders/perguntas/como-realizar-avaliacao-e-manejo-inicial-do-paciente-com-comportamento-suicida-na-aps/">TelessaúdeRS-UFRGS — avaliação e manejo do comportamento suicida na APS</a> ·
+<a href="https://linhasdecuidado.saude.gov.br/portal/depressao/unidade-hospitalar-especializada/avaliacao-conduta/">Ministério da Saúde — Linha de Cuidado da Depressão no adulto</a> ·
+<a href="https://subpav.org/download/prot/Guia_Suicidio.pdf">SMS-RJ — Guia de Avaliação do Risco de Suicídio</a>.</p>
+<p>Roteiro base: Lara. Camada de ramificação, pesos e desfechos: esta versão, 27/08/2026.</p>
+</footer>
+</div>
